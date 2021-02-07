@@ -1,6 +1,6 @@
 {
 	"name": "@devtri/ami-reservation",
-	"homepage": "https://ami.devtri.xyz/",
+	"homepage": "https://ami.devtri.xyz",
 	"version": "2.0.0",
 	"dependencies": {
 		"@glidejs/glide": "^3.4.1",
