@@ -33,7 +33,7 @@ export default withRouter(function Layout({ children, location }) {
       {location.pathname === LOGIN_PAGE ||
       location.pathname === CHANGE_PASSWORD_PAGE ||
       location.pathname === FORGET_PASSWORD_PAGE ||
-      location.pathname ===  MUTHOWIF_REGISTRATION_PAGE ||
+      location.pathname === MUTHOWIF_REGISTRATION_PAGE ||
       location.pathname === REGISTRATION_PAGE ? (
         <Content>{children}</Content>
       ) : (
@@ -46,6 +46,7 @@ export default withRouter(function Layout({ children, location }) {
           location.pathname === AGENT_PROFILE_PAGE ||
           location.pathname === CHANGE_PASSWORD_PAGE ||
           location.pathname === FORGET_PASSWORD_PAGE ||
+          location.pathname === MUTHOWIF_REGISTRATION_PAGE ||
           location.pathname === PRIVACY_PAGE ||
           location.pathname ===
             `${AGENT_ACCOUNT_SETTINGS_PAGE + AGENT_IMAGE_EDIT_PAGE}` ||
