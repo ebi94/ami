@@ -9,7 +9,7 @@ const Home = () => {
   const [, dispatch] = useContext(LayoutContext);
   return (
     <>
-      <SearchArea />
+      <SearchArea useSearch/>
       <Waypoint
         onEnter={() => dispatch({ type: 'HIDE_TOP_SEARCHBAR' })}
         onLeave={() => dispatch({ type: 'SHOW_TOP_SEARCHBAR' })}

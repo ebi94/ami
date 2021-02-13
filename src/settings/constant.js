@@ -1,6 +1,7 @@
 // General Page Section
 export const HOME_PAGE = '/';
 export const AGENTS_PAGE = '/agents';
+export const LANDING_PAGE = '/landing'
 
 // Listing Single Page Section
 export const LISTING_POSTS_PAGE = '/listing';

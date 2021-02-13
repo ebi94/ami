@@ -47,8 +47,8 @@ const LocationGrid = () => {
   return (
     <LocationWrapper>
       <Container fluid={true}>
-        {/* <SectionTitle
-          title={<Heading content="Explore Destinations" />}
+        <SectionTitle
+          title={<Heading content="Artikel Terbaru" />}
           link={<TextLink link={LISTING_POSTS_PAGE} content="Show all" />}
         />
 
@@ -76,7 +76,7 @@ const LocationGrid = () => {
           ) : (
             <Loader />
           )}
-        </CarouselSection> */}
+        </CarouselSection>
       </Container>
     </LocationWrapper>
   );

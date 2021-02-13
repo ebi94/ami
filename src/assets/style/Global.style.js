@@ -790,6 +790,30 @@ const GlobalStyle = createGlobalStyle`
   .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
     background-color: rgba(0, 132, 137, 0.2);
   }
+
+  .page-wrapper {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    .page {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      h2 {
+        margin-bottom: 30px;
+        font-size: 2rem;
+      }
+      .separator {
+        margin-bottom: 65px;
+        display: inline-block;
+        width: 30px;
+        height: 5px;
+        background: #1890FF;
+        border-radius: 2.5px;
+      }
+    }
+  }
 `;
 
 export default GlobalStyle;

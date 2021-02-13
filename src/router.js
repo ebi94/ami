@@ -16,6 +16,7 @@ import {
   PRIVACY_PAGE,
   PRICING_PLAN_PAGE,
   MUTHOWIF_REGISTRATION_PAGE,
+  LANDING_PAGE,
 } from './settings/constant';
 
 /**
@@ -127,6 +128,15 @@ const routes = [
       modules: ['Muthowif'],
     }),
   },
+  {
+    path: LANDING_PAGE,
+    component: Loadable({
+      loader: () =>
+        import(/* webpackChunkName: "Landing" */ './container/Home/Landing'),
+      loading: Loading,
+      modules: ['Landing'],
+    }),
+  }
 ];
 
 /**
