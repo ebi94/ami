@@ -106,30 +106,6 @@ export default () => {
         />
       </FormControl>
       <FormControl
-        label="Alamat Lengkap"
-        htmlFor="alamat"
-        error={
-          errors.alamat && (
-            <>
-              {errors.alamat?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-            </>
-          )
-        }
-      >
-        <Controller
-          as={<Input />}
-          id="alamat"
-          name="alamat"
-          defaultValue=""
-          control={control}
-          rules={{
-            required: true,
-          }}
-        />
-      </FormControl>
-      <FormControl
         label="Sandi"
         htmlFor="password"
         error={
@@ -175,7 +151,7 @@ export default () => {
           name="confirmPassword"
         />
       </FormControl>
-      <FormControl
+      {/* <FormControl
         label="Foto"
         htmlFor="foto"
         error={
@@ -230,7 +206,7 @@ export default () => {
             required: true,
           }}
         />
-      </FormControl>
+      </FormControl> */}
       {/* <FieldWrapper>
         <SwitchWrapper>
           <Controller

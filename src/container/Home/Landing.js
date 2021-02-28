@@ -3,6 +3,7 @@ import SearchArea from './SearchLanding/Search';
 import WelcomeCard from 'components/WelcomeCard/WelcomeCard';
 import VisiCard from 'components/VisiCard/VisiCard';
 import MisiCard from 'components/MisiCard/MisiCard';
+import SignupCard from 'components/SignupCard/SignupCard';
 import Article from '../Article/Article';
 import ImageCarousel from './ImageCarousel/ImageCarousel';
 
@@ -29,6 +30,7 @@ const Home = () => {
                 title="Misi Kami"
                 description="Kami adalah Asosiasi Muthowif Indonesia"
             />
+            <SignupCard />
             <Article />
         </>
     );
