@@ -14,11 +14,11 @@ const MapDropdown = () => {
   const RouteList = () => {
     return (
       <Menu>
-        <Menu.Item onClick={() => setRoute('Mecca - Jeddah')}>
-          Mecca - Jeddah
+        <Menu.Item onClick={() => setRoute('Meddinah - Jeddah')}>
+          Meddinah - Jeddah
         </Menu.Item>
-        <Menu.Item onClick={() => setRoute('Jeddah - Mecca')}>
-          Jeddah - Mecca
+        <Menu.Item onClick={() => setRoute('Jeddah - Jeddah')}>
+          Jeddah - Jeddah
         </Menu.Item>
       </Menu>
     );
