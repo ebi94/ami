@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 export const AuthContext = React.createContext();
 
@@ -24,10 +25,21 @@ const AuthProvider = (props) => {
   };
 
   const signUp = (params) => {
-    console.log(params, 'sign up form Props');
-    setUser(fakeUserData);
-    setLoggedIn(true);
-    history.push(`/`);
+    axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+    axios.post('https://backend-ami.herokuapp.com/muthowif', {
+      first_name: params.namalengkap,
+      phone: params.telp,
+      email: params.email,
+      password: params.password
+    })
+    .then(function (response) {
+      console.log('response', response);
+    })
+    .catch(function (error) {
+      console.log('error', error);
+    });
+    // console.log(params, 'sign up form Props');
   };
 
   const logOut = () => {
