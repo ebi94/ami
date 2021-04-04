@@ -37,7 +37,8 @@
 		"react-waypoint": "^9.0.2",
 		"recompose": "^0.30.0",
 		"styled-components": "^5.1.0",
-		"styled-system": "^5.1.5"
+		"styled-system": "^5.1.5",
+		"sweetalert": "^2.1.2"
 	},
 	"scripts": {
 		"start": "react-app-rewired start",

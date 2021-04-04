@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 export const AuthContext = React.createContext();
 
@@ -25,15 +26,20 @@ const AuthProvider = (props) => {
   };
 
   const signUp = (params) => {
-    axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+    axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
     axios.post('https://backend-ami.herokuapp.com/muthowif', {
       first_name: params.namalengkap,
       phone: params.telp,
       email: params.email,
       password: params.password
     })
-    .then(function (response) {
+    .then((response) => {
+      const messages = response && response.data && response.data.messages;
+      swal("Terima Kasih", messages, "success").then(() => {
+        history.go(0);
+      });
       console.log('response', response);
     })
     .catch(function (error) {
