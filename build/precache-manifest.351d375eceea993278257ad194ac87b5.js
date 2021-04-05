@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "05fab8952cb719c15173e27e2cb7f5d0",
+    "revision": "abc15d0131138b6f60aa9885388b2e9a",
     "url": "/index.html"
   },
   {
@@ -48,15 +48,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/AgentAccountSettingsPage.7e98c11e.chunk.css"
   },
   {
-    "revision": "4ce6b28ee10efe3460b0",
+    "revision": "e9202bed27cf367dff20",
     "url": "/static/css/SignIn.c516a1f8.chunk.css"
   },
   {
-    "revision": "8665784ccfa859f367d1",
+    "revision": "de95bad0a05cb8fa7201",
     "url": "/static/css/SignUp.c516a1f8.chunk.css"
   },
   {
-    "revision": "63b6cd7a5ae0a3df5576",
+    "revision": "4bd5552604aa87a1abff",
     "url": "/static/css/SinglePageView.3000f67e.chunk.css"
   },
   {
@@ -140,8 +140,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/AgentDetailsViewPage.e4e66705.chunk.js"
   },
   {
-    "revision": "2e3255b3040d73dfb02d",
-    "url": "/static/js/ForgetPassword.c87d5f3a.chunk.js"
+    "revision": "1f51f87999a823313a06",
+    "url": "/static/js/ForgetPassword.8e831ccf.chunk.js"
   },
   {
     "revision": "b2e1f8021ca92469c2cf",
@@ -156,8 +156,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/Listing.b05426a2.chunk.js"
   },
   {
-    "revision": "02e8ef583dc9af2a10c4",
-    "url": "/static/js/Muthowif.0a89ce11.chunk.js"
+    "revision": "e52bcc6c562223ad50e0",
+    "url": "/static/js/Muthowif.5f8195d4.chunk.js"
   },
   {
     "revision": "20ef5e7a7e897ae9c0dc",
@@ -168,28 +168,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/Pricing.79a54d3b.chunk.js"
   },
   {
-    "revision": "4ce6b28ee10efe3460b0",
-    "url": "/static/js/SignIn.fd970144.chunk.js"
+    "revision": "e9202bed27cf367dff20",
+    "url": "/static/js/SignIn.8f30e4e9.chunk.js"
   },
   {
-    "revision": "8665784ccfa859f367d1",
-    "url": "/static/js/SignUp.8867bf80.chunk.js"
+    "revision": "de95bad0a05cb8fa7201",
+    "url": "/static/js/SignUp.ef514e8f.chunk.js"
   },
   {
-    "revision": "63b6cd7a5ae0a3df5576",
-    "url": "/static/js/SinglePageView.a6ea3d23.chunk.js"
+    "revision": "4bd5552604aa87a1abff",
+    "url": "/static/js/SinglePageView.9c790c60.chunk.js"
   },
   {
-    "revision": "ef429d5fbf38c782562c",
-    "url": "/static/js/main.c0aa1a56.chunk.js"
+    "revision": "7d15083680e99f15538e",
+    "url": "/static/js/main.99a2c322.chunk.js"
   },
   {
     "revision": "61577246bb437d0253bb",
     "url": "/static/js/privacy.eb01d566.chunk.js"
   },
   {
-    "revision": "14888b7511218516fb6c",
-    "url": "/static/js/runtime-main.2b213fe2.js"
+    "revision": "075c174de4bc094d7222",
+    "url": "/static/js/runtime-main.0da47497.js"
   },
   {
     "revision": "6f0e20ab98e7f6011e0c0ddd69794fd1",
@@ -218,10 +218,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "eea21cfc27bff1ff5db1f65ea535ca19",
     "url": "/static/media/login-page-bg.eea21cfc.jpg"
-  },
-  {
-    "revision": "980da4299092b1415ed48ec836467e29",
-    "url": "/static/media/logo-alt.980da429.svg"
   },
   {
     "revision": "f918bb83203e7f4f83be3c96a8f08536",

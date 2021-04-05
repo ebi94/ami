@@ -12,7 +12,7 @@ import Wrapper, {
 } from './Auth.style';
 // demo images
 import authBgImg from 'assets/images/login-page-bg.jpg';
-import tripFinder from 'assets/images/logo-alt.svg';
+import amiLogo from 'assets/images/AMI-Square.png';
 
 export default function ForgetPassWord() {
   const { control, errors, handleSubmit } = useForm({
@@ -25,7 +25,7 @@ export default function ForgetPassWord() {
   return (
     <Wrapper>
       <FormWrapper>
-        <Logo withLink linkTo="/" src={tripFinder} title="AMI" />
+        <Logo withLink linkTo="/" src={amiLogo} title="AMI" />
         <Title>Welcome Back</Title>
         <TitleInfo>Enter your email to recover your account</TitleInfo>
         <form onSubmit={handleSubmit(onSubmit)}>

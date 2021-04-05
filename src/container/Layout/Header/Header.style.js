@@ -34,9 +34,6 @@ const HeaderWrapper = styled.header`
           }
 
           a {
-            img {
-              opacity: 0;
-            }
 
             h3 {
               color: ${themeGet('color.1', '#ffffff')};
@@ -66,9 +63,6 @@ const HeaderWrapper = styled.header`
           }
 
           a {
-            img {
-              opacity: 0;
-            }
 
             h3 {
               color: ${themeGet('color.1', '#ffffff')};

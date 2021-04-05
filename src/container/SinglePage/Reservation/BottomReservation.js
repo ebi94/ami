@@ -3,7 +3,7 @@ import { IoIosClose } from 'react-icons/io';
 import Rating from 'components/UI/Rating/Rating';
 import { Button, Modal } from 'antd';
 import StickyBooking from 'components/StickyBooking/StickyBooking';
-import LogoImage from 'assets/images/logo-alt.svg';
+import LogoImage from 'assets/images/AMI-Square.png';
 import Reservation from './Reservation';
 
 const BottomReservation = ({ title, price, rating, ratingCount }) => {

@@ -14,13 +14,13 @@ import Wrapper, {
 } from '../Auth.style';
 // demo image
 import signInImage from 'assets/images/login-page-bg.jpg';
-import tripFinder from 'assets/images/logo-alt.svg';
+import amiLogo from 'assets/images/AMI-Square.png';
 
 const SignIn = () => {
   return (
     <Wrapper>
       <FormWrapper>
-        <Logo withLink linkTo="/" src={tripFinder} title="AMI" />
+        <Logo withLink linkTo="/" src={amiLogo} title="AMI" />
         <Title>Welcome Back</Title>
         <TitleInfo>Please log into your account</TitleInfo>
         <SignInForm />

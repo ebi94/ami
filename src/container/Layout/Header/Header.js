@@ -25,7 +25,7 @@ import HeaderWrapper, {
   LogoArea,
 } from './Header.style';
 
-import tripFinder from 'assets/images/logo-alt.svg';
+import amiLogo from 'assets/images/AMI-Square.png';
 const avatarImg = `http://s3.amazonaws.com/redqteam.com/isomorphic-reloaded-image/profilepic.png`;
 
 const LogoIcon = () => (
@@ -63,11 +63,11 @@ export default withRouter(function Header({ location }) {
           <Navbar
             logo={
               <>
-                {headerType === 'transparent' && <LogoIcon />}
+                {/* {headerType === 'transparent' && <LogoIcon />} */}
                 <Logo
                   withLink
                   linkTo="/"
-                  src={tripFinder}
+                  src={amiLogo}
                   title="AMI"
                 />
               </>
@@ -86,11 +86,11 @@ export default withRouter(function Header({ location }) {
           <MobileNavbar className={headerType}>
             <LogoArea>
               <>
-                {headerType === 'transparent' && <LogoIcon />}
+                {/* {headerType === 'transparent' && <LogoIcon />} */}
                 <Logo
                   withLink
                   linkTo="/"
-                  src={tripFinder}
+                  src={amiLogo}
                   title="AMI"
                 />
               </>
