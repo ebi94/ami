@@ -31,6 +31,7 @@ export const Description = styled.p`
     color: #858d96 !important;
     padding-top: 30px;
     font-size: 20px;
+    max-width: 1100px;
 `;
 
 export const Border = styled.div`

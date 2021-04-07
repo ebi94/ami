@@ -814,6 +814,10 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+
+  .ant-spin-dot-item {
+    background-color: #f0f0f0 !important;
+  }
 `;
 
 export default GlobalStyle;

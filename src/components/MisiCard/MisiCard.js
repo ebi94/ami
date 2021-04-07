@@ -6,19 +6,25 @@ import Wrapper, {
     Description
 } from './MisiCard.style';
 
-const WelcomeCard =({title, description}) => {
+const MisiCard =({title, description}) => {
     return (
         <Wrapper>  
             <Title>{title}</Title>
             <Border />
-            <Description>{description}</Description>
+            <Description>
+                <ul>
+                {description.map((item, index) => (
+                    <li key={index}>{item.desc}</li>
+                ))}
+                </ul>
+            </Description>
         </Wrapper>
     )
 }
 
-WelcomeCard.propTypes = {
+MisiCard.propTypes = {
     title: PropTypes.string,
-    description: PropTypes.string
+    description: PropTypes.array
 }
 
-export default WelcomeCard;
+export default MisiCard;

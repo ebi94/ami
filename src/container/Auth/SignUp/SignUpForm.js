@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { MdLockOpen } from 'react-icons/md';
-import { Input, Switch, Button } from 'antd';
+import { Input, Switch, Button, Spin } from 'antd';
 import FormControl from 'components/UI/FormControl/FormControl';
 import { AuthContext } from 'context/AuthProvider';
 import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
@@ -12,9 +12,11 @@ export default () => {
   const { control, watch, errors, handleSubmit } = useForm({
     mode: 'onChange',
   });
+  const [loading, setLoading] = useState(false);
   const password = watch('password');
   const confirmPassword = watch('confirmPassword');
   const onSubmit = (data) => {
+    setLoading(true)
     signUp(data);
   };
   if (loggedIn) {
@@ -24,8 +26,8 @@ export default () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl
-        label="Username"
-        htmlFor="username"
+        label="Nama Lengkap"
+        htmlFor="namalengkap"
         error={
           errors.username && (
             <>
@@ -38,8 +40,8 @@ export default () => {
       >
         <Controller
           as={<Input />}
-          id="username"
-          name="username"
+          id="namalengkap"
+          name="namalengkap"
           defaultValue=""
           control={control}
           rules={{
@@ -77,7 +79,35 @@ export default () => {
         />
       </FormControl>
       <FormControl
-        label="Password"
+        label="No telepon"
+        htmlFor="telp"
+        error={
+          errors.telp && (
+            <>
+              {errors.telp?.type === 'required' && (
+                <span>This field is required!</span>
+              )}
+              {errors.telp?.type === 'pattern' && (
+                <span>Please enter a valid email address!</span>
+              )}
+            </>
+          )
+        }
+      >
+        <Controller
+          as={<Input />}
+          type="telp"
+          id="telp"
+          name="telp"
+          defaultValue=""
+          control={control}
+          rules={{
+            required: true,
+          }}
+        />
+      </FormControl>
+      <FormControl
+        label="Sandi"
         htmlFor="password"
         error={
           errors.password && (
@@ -105,7 +135,7 @@ export default () => {
         />
       </FormControl>
       <FormControl
-        label="Confirm password"
+        label="Ulangi Sandi"
         htmlFor="confirmPassword"
         error={
           confirmPassword &&
@@ -122,7 +152,63 @@ export default () => {
           name="confirmPassword"
         />
       </FormControl>
-      <FieldWrapper>
+      {/* <FormControl
+        label="Foto"
+        htmlFor="foto"
+        error={
+          errors.foto && (
+            <>
+              {errors.foto?.type === 'required' && (
+                <span>This field is required!</span>
+              )}
+            </>
+          )
+        }
+      >
+        <Controller
+          as={  
+            <Upload>
+              <Button icon={<UploadOutlined />}>Unggah</Button>
+            </Upload>
+          }
+          id="foto"
+          name="foto"
+          defaultValue=""
+          control={control}
+          rules={{
+            required: true,
+          }}
+        />
+      </FormControl>
+      <FormControl
+        label="Sertifikat"
+        htmlFor="foto"
+        error={
+          errors.foto && (
+            <>
+              {errors.foto?.type === 'required' && (
+                <span>This field is required!</span>
+              )}
+            </>
+          )
+        }
+      >
+        <Controller
+          as={  
+            <Upload>
+              <Button icon={<UploadOutlined />}>Unggah</Button>
+            </Upload>
+          }
+          id="foto"
+          name="foto"
+          defaultValue=""
+          control={control}
+          rules={{
+            required: true,
+          }}
+        />
+      </FormControl> */}
+      {/* <FieldWrapper>
         <SwitchWrapper>
           <Controller
             as={<Switch />}
@@ -143,16 +229,16 @@ export default () => {
           />
           <Label>I agree with terms and conditions</Label>
         </SwitchWrapper>
-      </FieldWrapper>
+      </FieldWrapper> */}
       <Button
         className="signin-btn"
         type="primary"
         htmlType="submit"
         size="large"
         style={{ width: '100%' }}
+        disabled={loading}
       >
-        <MdLockOpen />
-        Register
+        {loading ? (<Spin size="default" />) : "Daftar Sekarang"}
       </Button>
     </form>
   );

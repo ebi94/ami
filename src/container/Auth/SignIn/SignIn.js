@@ -21,14 +21,15 @@ const SignIn = () => {
     <Wrapper>
       <FormWrapper>
         <Logo withLink linkTo="/" src={amiLogo} title="AMI" />
-        <Title>Welcome Back</Title>
-        <TitleInfo>Please log into your account</TitleInfo>
+        <Title>Selamat Datang Kembali</Title>
+        <TitleInfo>Silahkan Masuk ke Akun Anda</TitleInfo>
         <SignInForm />
-        <Divider>Or log in with </Divider>
-        <SocialLogin />
+        {/* <Divider>Or log in with </Divider>
+        <SocialLogin /> */}
+        <br />
         <Text>
-          Don't Have an Account?&nbsp;
-          <Link to={REGISTRATION_PAGE}>Registration</Link>
+          Belum Punya Akun?&nbsp;
+          <Link to={REGISTRATION_PAGE}>Daftar Disini</Link>
         </Text>
       </FormWrapper>
       <BannerWrapper>

@@ -26,8 +26,8 @@ export default function ForgetPassWord() {
     <Wrapper>
       <FormWrapper>
         <Logo withLink linkTo="/" src={amiLogo} title="AMI" />
-        <Title>Welcome Back</Title>
-        <TitleInfo>Enter your email to recover your account</TitleInfo>
+        <Title>Selamat Datang</Title>
+        <TitleInfo>Masukan Email Anda</TitleInfo>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl
             label="Email"

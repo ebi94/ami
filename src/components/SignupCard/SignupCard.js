@@ -13,7 +13,7 @@ const WelcomeCard =({title, description}) => {
     return (
         <Wrapper>
             <ButtonWrapper>
-                <Link to="tambah-muthowif">
+                <Link to="sign-up">
                     <Button
                         className="signin-btn"
                         type="primary"
