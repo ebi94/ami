@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    // text-align: center;
     @media only screen and (max-width: 480px) {
         padding: 60px 0 50px;
     }
@@ -41,8 +41,23 @@ export const Border = styled.div`
     margin-left: auto;
 `;
 
-export const ButtonWrapper = styled.div`
-    width: 150px;
+export const ContactDetails = styled.div`
+  border-radius: 3px;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: ${themeGet('color.2', '#F7F7F7')};
+
+  > h3 {
+    margin-top: 30px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+`;
+
+export const FormWrapper = styled.div`
+  margin-top: 35px;
+  width: 70%;
 `;
 
 export default Wrapper;

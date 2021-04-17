@@ -12,13 +12,15 @@ import { ButtonWrapper } from 'components/UI/GlideCarousel/GlideCarousel.style';
 const WelcomeCard =({title, description}) => {
     return (
         <Wrapper>
+            <Title>Siap Begabung dengan Kami ?</Title>
+            <Border />
             <ButtonWrapper>
                 <Link to="sign-up">
                     <Button
                         className="signin-btn"
                         type="primary"
                         size="large"
-                        style={{ width: '100%' }}
+                        style={{ width: '100%', marginTop: '30px', backgroundColor: '#008489' }}
                     >
                         Daftar Sekarang
                     </Button>

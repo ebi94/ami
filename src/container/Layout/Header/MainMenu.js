@@ -19,19 +19,19 @@ const MainMenu = ({ className }) => {
           Home
         </NavLink>
       </Menu.Item>
-      <Menu.Item key="1">
+      {/* <Menu.Item key="1">
         <NavLink to={`${LISTING_POSTS_PAGE}`}>
           Listing
         </NavLink>
-      </Menu.Item>
+      </Menu.Item> */}
       <Menu.Item key="2">
         <NavLink to={`${HOME_ABOUT_US}`}>
-          About Us
+          Tentang Kami
         </NavLink>
       </Menu.Item>
       <Menu.Item key="3">
         <NavLink to={`${HOME_CONTACT_US}`}>
-          Contact Us
+          Kontak Kami
         </NavLink>
       </Menu.Item>
     </Menu>

@@ -6,6 +6,7 @@ import VisiCard from 'components/VisiCard/VisiCard';
 import MisiCard from 'components/MisiCard/MisiCard';
 import JoinCard from 'components/JoinCard/JoinCard';
 import SignupCard from 'components/SignupCard/SignupCard';
+import ContactCard from 'components/ContactCard/ContactCard';
 import Article from '../Article/Article';
 import ImageCarousel from './ImageCarousel/ImageCarousel';
 
@@ -15,7 +16,8 @@ const Home = () => {
         { desc: "Menjadi Asosiasi yang selalu melindungi para pembimbing baik secara hukum maupun pelayanan"},
         { desc: "Menjadi Asosiasi yang mampu bersaing dalam memberikan pelayanan di mata Domestik dan International"},
         { desc: "Mengedepankan Pelayanan untuk para jamaah Haji dan Umroh"}
-    ]
+    ];
+
     return (
         <>
             <SearchArea />
@@ -55,14 +57,14 @@ const Home = () => {
                 description={misiList}
             />
             <JoinCard />
-            <div>
+            {/* <div>
                 <ImageCarousel
                     title="Partner Kami"
                     dataApi="/data/partner.json"
                 />  
-            </div>
+            </div> */}
             <SignupCard />
-            <Article />
+            <ContactCard />
         </>
     );
 };

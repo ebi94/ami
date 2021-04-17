@@ -12,7 +12,7 @@ const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl
-        label="Your message"
+        label="Pesan"
         htmlFor="message"
         error={errors.message && <span>This field is required!</span>}
       >
@@ -28,7 +28,7 @@ const ContactForm = () => {
       <Row gutter={30}>
         <Col md={12}>
           <FormControl
-            label="Your email"
+            label="Email"
             htmlFor="email"
             error={
               errors.email && (
@@ -59,7 +59,7 @@ const ContactForm = () => {
         </Col>
         <Col md={12}>
           <FormControl
-            label="Your contact number"
+            label="No telepon "
             htmlFor="phone"
             error={
               errors.phone && (
@@ -85,7 +85,7 @@ const ContactForm = () => {
           </FormControl>
         </Col>
       </Row>
-      <FormControl>
+      {/* <FormControl>
         <Controller
           name="cookie"
           onChange={([e]) => {
@@ -98,10 +98,10 @@ const ContactForm = () => {
           }
           control={control}
         />
-      </FormControl>
+      </FormControl> */}
       <FormControl>
         <Button type="primary" htmlType="submit" size="large">
-          Submit
+          Kirim
         </Button>
       </FormControl>
     </form>

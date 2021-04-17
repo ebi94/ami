@@ -41,4 +41,11 @@ export const Border = styled.div`
     margin-left: auto;
 `;
 
+export const ContentWrapper = styled.div`
+    display: flex;
+    width: 70%;
+    margin-top: 50px;
+    flex-wrap: wrap;
+`;
+
 export default Wrapper;
