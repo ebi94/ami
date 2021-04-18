@@ -30,7 +30,7 @@ const AuthProvider = (props) => {
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
     axios.post('https://backend-ami.herokuapp.com/muthowif', {
-      first_name: params.namalengkap,
+      firstName: params.namalengkap,
       phone: params.telp,
       email: params.email,
       password: params.password
