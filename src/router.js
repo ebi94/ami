@@ -184,6 +184,8 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
  */
 
 const Routes = () => {
+  const { isAuthenticated } = useContext(AuthContext);
+  isAuthenticated();
   return (
     <Layout>
       <Switch>

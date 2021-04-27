@@ -20,6 +20,8 @@ const languageOptions = [
 export default () => {
   const { control, errors, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
+  const dataU = localStorage.getItem('dataUser');
+	const dataUser = JSON.parse(dataU);
   return (
     <Fragment>
       <FormTitle>Basic Information</FormTitle>
@@ -35,7 +37,7 @@ export default () => {
                 as={<Input />}
                 id="firstName"
                 name="firstName"
-                defaultValue=""
+                defaultValue={dataUser.firstName}
                 control={control}
                 rules={{ required: true }}
               />
@@ -51,7 +53,7 @@ export default () => {
                 as={<Input />}
                 id="lastName"
                 name="lastName"
-                defaultValue=""
+                defaultValue={dataUser.lastName}
                 control={control}
                 rules={{ required: true }}
               />
@@ -143,7 +145,7 @@ export default () => {
                 type="email"
                 id="email"
                 name="email"
-                defaultValue=""
+                defaultValue={dataUser.email}
                 control={control}
                 rules={{
                   required: true,
@@ -173,7 +175,7 @@ export default () => {
                 as={<Input />}
                 id="phoneNumber"
                 name="phoneNumber"
-                defaultValue=""
+                defaultValue={dataUser.phone}
                 control={control}
                 rules={{
                   required: true,
@@ -192,7 +194,7 @@ export default () => {
                 as={<Input />}
                 id="address"
                 name="address"
-                defaultValue=""
+                defaultValue={dataUser.address}
                 control={control}
                 rules={{ required: true }}
               />

@@ -35,9 +35,9 @@ const ProfileMenu = ({ avatar, history }) => {
         <Menu.Item onClick={closeDropdown} key="0">
           <NavLink to={AGENT_PROFILE_PAGE}>View Profile</NavLink>
         </Menu.Item>
-        <Menu.Item onClick={closeDropdown} key="1">
+        {/* <Menu.Item onClick={closeDropdown} key="1">
           <NavLink to={ADD_HOTEL_PAGE}>Add Hotel</NavLink>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item onClick={closeDropdown} key="2">
           <NavLink to={AGENT_ACCOUNT_SETTINGS_PAGE}>Account Settings</NavLink>
         </Menu.Item>

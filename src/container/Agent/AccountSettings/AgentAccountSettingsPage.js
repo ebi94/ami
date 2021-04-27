@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import { Row, Col, Menu, Avatar } from 'antd';
 import Container from 'components/UI/Container/Container.style';
 import AgentCreateOrUpdateForm from './AgentCreateOrUpdateForm';
 import AgentPictureChangeForm from './AgentPictureChangeForm';
 import ChangePassWord from './ChangePassWordForm';
+import { AuthContext } from 'context/AuthProvider';
 import {
   AGENT_IMAGE_EDIT_PAGE,
   AGENT_PASSWORD_CHANGE_PAGE,
@@ -66,6 +67,9 @@ const AccountSettingRoute = (props) => {
 };
 
 export default function AgentAccountSettingsPage(props) {
+  const { loggedIn, user } = useContext(AuthContext);
+  const dataU = localStorage.getItem('dataUser');
+	const dataUser = JSON.parse(dataU);
   return (
     <AccountSettingWrapper>
       <Container fullWidth={true}>
@@ -78,7 +82,7 @@ export default function AgentAccountSettingsPage(props) {
                   alt="avatar"
                 />
                 <ContentWrapper>
-                  <AgentName>Aziz Acharki Ahmedh</AgentName>
+                  <AgentName>{dataUser.firstName}</AgentName>
                   <Link to={AGENT_PROFILE_PAGE}>View profile</Link>
                 </ContentWrapper>
               </AgentAvatar>

@@ -42,10 +42,10 @@ const LogoIcon = () => (
 
 export default withRouter(function Header({ location }) {
   const [{ searchVisibility }] = useContext(LayoutContext);
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn, user } = useContext(AuthContext);
   const { width } = useWindowSize();
   const [state, setState] = useState(false);
-
+  console.log('user context', user);
   const sidebarHandler = () => {
     setState(!state);
   };
