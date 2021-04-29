@@ -79,6 +79,50 @@ const AuthProvider = (props) => {
 			});
 	};
 
+	const editProfile = (id, params) => {
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+		axios.patch(baseUrl + '/muthowif/' + id, {
+			firstName: params.firstName,
+			lastName: params.lastName,
+			phone: params.telp,
+			email: params.email,
+			gender: params.agentGender,
+			address: params.address,
+			// dateOfBirthday: params,dateOfBirthday,
+			describeProfile: params.describeYourself,
+			password: params.password
+
+		})
+			.then(async(response) => {
+				const resDetail = await detailProfile(id)
+				const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+				localStorage.setItem('dataUser', JSON.stringify(dataDetail));
+				const messages = response && response.data && response.data.messages;
+				swal("Terima Kasih", messages, "success").then(() => {
+					history.go('/account-settings');
+				});
+				console.log('response', response);
+			})
+			.catch(function (error) {
+				console.log('error', error);
+			});
+	};
+
+	const detailProfile = (id) => {
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+		return axios.get(baseUrl + '/muthowif/' + id)
+			.then((response) => {
+				return response;
+			})
+			.catch((error) => {
+				return error;
+			});
+	}
+
 	const logOut = () => {
 		setUser(null);
 		localStorage.clear();
@@ -99,6 +143,8 @@ const AuthProvider = (props) => {
 				logOut,
 				signIn,
 				signUp,
+				editProfile,
+				detailProfile,
 				user,
 				isAuthenticated
 			}}

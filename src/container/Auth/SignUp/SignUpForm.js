@@ -8,151 +8,151 @@ import { AuthContext } from 'context/AuthProvider';
 import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
 
 export default () => {
-  const { signUp, loggedIn } = useContext(AuthContext);
-  const { control, watch, errors, handleSubmit } = useForm({
-    mode: 'onChange',
-  });
-  const [loading, setLoading] = useState(false);
-  const password = watch('password');
-  const confirmPassword = watch('confirmPassword');
-  const onSubmit = (data) => {
-    setLoading(true)
-    signUp(data);
-  };
-  if (loggedIn) {
-    return <Redirect to={{ pathname: '/' }} />;
-  }
+    const { signUp, loggedIn } = useContext(AuthContext);
+    const { control, watch, errors, handleSubmit } = useForm({
+        mode: 'onChange',
+    });
+    const [loading, setLoading] = useState(false);
+    const password = watch('password');
+    const confirmPassword = watch('confirmPassword');
+    const onSubmit = (data) => {
+        setLoading(true)
+        signUp(data);
+    };
+    if (loggedIn) {
+        return <Redirect to={{ pathname: '/' }} />;
+    }
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl
-        label="Nama Lengkap"
-        htmlFor="namalengkap"
-        error={
-          errors.username && (
-            <>
-              {errors.username?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-            </>
-          )
-        }
-      >
-        <Controller
-          as={<Input />}
-          id="namalengkap"
-          name="namalengkap"
-          defaultValue=""
-          control={control}
-          rules={{
-            required: true,
-          }}
-        />
-      </FormControl>
-      <FormControl
-        label="Email"
-        htmlFor="email"
-        error={
-          errors.email && (
-            <>
-              {errors.email?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-              {errors.email?.type === 'pattern' && (
-                <span>Please enter a valid email address!</span>
-              )}
-            </>
-          )
-        }
-      >
-        <Controller
-          as={<Input />}
-          type="email"
-          id="email"
-          name="email"
-          defaultValue=""
-          control={control}
-          rules={{
-            required: true,
-            pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-          }}
-        />
-      </FormControl>
-      <FormControl
-        label="No telepon"
-        htmlFor="telp"
-        error={
-          errors.telp && (
-            <>
-              {errors.telp?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-              {errors.telp?.type === 'pattern' && (
-                <span>Please enter a valid email address!</span>
-              )}
-            </>
-          )
-        }
-      >
-        <Controller
-          as={<Input />}
-          type="telp"
-          id="telp"
-          name="telp"
-          defaultValue=""
-          control={control}
-          rules={{
-            required: true,
-          }}
-        />
-      </FormControl>
-      <FormControl
-        label="Sandi"
-        htmlFor="password"
-        error={
-          errors.password && (
-            <>
-              {errors.password?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-              {errors.password?.type === 'minLength' && (
-                <span>Password must be at lest 6 characters!</span>
-              )}
-              {errors.password?.type === 'maxLength' && (
-                <span>Password must not be longer than 20 characters!</span>
-              )}
-            </>
-          )
-        }
-      >
-        <Controller
-          as={<Input.Password />}
-          defaultValue=""
-          control={control}
-          id="password"
-          name="password"
-          rules={{ required: true, minLength: 6, maxLength: 20 }}
-        />
-      </FormControl>
-      <FormControl
-        label="Ulangi Sandi"
-        htmlFor="confirmPassword"
-        error={
-          confirmPassword &&
-          password !== confirmPassword && (
-            <span>Your password is not same!</span>
-          )
-        }
-      >
-        <Controller
-          as={<Input.Password />}
-          defaultValue=""
-          control={control}
-          id="confirmPassword"
-          name="confirmPassword"
-        />
-      </FormControl>
-      {/* <FormControl
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <FormControl
+                label="Nama Lengkap"
+                htmlFor="namalengkap"
+                error={
+                    errors.username && (
+                        <>
+                            {errors.username?.type === 'required' && (
+                                <span>This field is required!</span>
+                            )}
+                        </>
+                    )
+                }
+            >
+                <Controller
+                    as={<Input />}
+                    id="namalengkap"
+                    name="namalengkap"
+                    defaultValue=""
+                    control={control}
+                    rules={{
+                        required: true,
+                    }}
+                />
+            </FormControl>
+            <FormControl
+                label="Email"
+                htmlFor="email"
+                error={
+                    errors.email && (
+                        <>
+                            {errors.email?.type === 'required' && (
+                                <span>This field is required!</span>
+                            )}
+                            {errors.email?.type === 'pattern' && (
+                                <span>Please enter a valid email address!</span>
+                            )}
+                        </>
+                    )
+                }
+            >
+                <Controller
+                    as={<Input />}
+                    type="email"
+                    id="email"
+                    name="email"
+                    defaultValue=""
+                    control={control}
+                    rules={{
+                        required: true,
+                        pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                    }}
+                />
+            </FormControl>
+            <FormControl
+                label="No telepon"
+                htmlFor="telp"
+                error={
+                    errors.telp && (
+                        <>
+                            {errors.telp?.type === 'required' && (
+                                <span>This field is required!</span>
+                            )}
+                            {errors.telp?.type === 'pattern' && (
+                                <span>Please enter a valid email address!</span>
+                            )}
+                        </>
+                    )
+                }
+            >
+                <Controller
+                    as={<Input />}
+                    type="telp"
+                    id="telp"
+                    name="telp"
+                    defaultValue=""
+                    control={control}
+                    rules={{
+                        required: true,
+                    }}
+                />
+            </FormControl>
+            <FormControl
+                label="Sandi"
+                htmlFor="password"
+                error={
+                    errors.password && (
+                        <>
+                            {errors.password?.type === 'required' && (
+                                <span>This field is required!</span>
+                            )}
+                            {errors.password?.type === 'minLength' && (
+                                <span>Password must be at lest 6 characters!</span>
+                            )}
+                            {errors.password?.type === 'maxLength' && (
+                                <span>Password must not be longer than 20 characters!</span>
+                            )}
+                        </>
+                    )
+                }
+            >
+                <Controller
+                    as={<Input.Password />}
+                    defaultValue=""
+                    control={control}
+                    id="password"
+                    name="password"
+                    rules={{ required: true, minLength: 6, maxLength: 20 }}
+                />
+            </FormControl>
+            <FormControl
+                label="Ulangi Sandi"
+                htmlFor="confirmPassword"
+                error={
+                    confirmPassword &&
+                    password !== confirmPassword && (
+                        <span>Your password is not same!</span>
+                    )
+                }
+            >
+                <Controller
+                    as={<Input.Password />}
+                    defaultValue=""
+                    control={control}
+                    id="confirmPassword"
+                    name="confirmPassword"
+                />
+            </FormControl>
+            {/* <FormControl
         label="Foto"
         htmlFor="foto"
         error={
@@ -208,7 +208,7 @@ export default () => {
           }}
         />
       </FormControl> */}
-      {/* <FieldWrapper>
+            {/* <FieldWrapper>
         <SwitchWrapper>
           <Controller
             as={<Switch />}
@@ -230,16 +230,16 @@ export default () => {
           <Label>I agree with terms and conditions</Label>
         </SwitchWrapper>
       </FieldWrapper> */}
-      <Button
-        className="signin-btn"
-        type="primary"
-        htmlType="submit"
-        size="large"
-        style={{ width: '100%' }}
-        disabled={loading}
-      >
-        {loading ? (<Spin size="default" />) : "Daftar Sekarang"}
-      </Button>
-    </form>
-  );
+            <Button
+                className="signin-btn"
+                type="primary"
+                htmlType="submit"
+                size="large"
+                style={{ width: '100%' }}
+                disabled={loading}
+            >
+                {loading ? (<Spin size="default" />) : "Daftar Sekarang"}
+            </Button>
+        </form>
+    );
 };

@@ -121,7 +121,7 @@ const AgentProfileInfo = () => {
 					<ProfileInformationArea>
 						<ProfileInformation>
 							<Heading content={username} />
-							<Text content={content} />
+							<Text content={dataUser.describeProfile} />
 						</ProfileInformation>
 						<SocialAccount>
 							<Popover content="Twitter">
