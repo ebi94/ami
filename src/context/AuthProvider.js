@@ -50,7 +50,7 @@ const AuthProvider = (props) => {
 				return { ...response.data }
 			})
 			.catch((error) => {
-				const messages = error && error.response && error.response.data && error.response.data.messages
+				const messages = error && error.response && error.response.data && error.response.data.messages;
 				swal("Gagal", messages, "warning");
 				console.log('error', error.response.data);
 				return { ...error.response.data }
@@ -110,6 +110,34 @@ const AuthProvider = (props) => {
 			});
 	};
 
+	const editPassword = (email, params) => {
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+		axios.post(baseUrl + '/auth/change-password', {
+			email: email,
+			password: params.password,
+			newPassword: params.newPassword
+
+		})
+			.then((response) => {
+				const messages = response && response.data && response.data.messages;
+				swal("Terima Kasih", messages, "success").then(() => {
+					history.go('/account-settings');
+				});
+				console.log('response', response);
+				return { ...response.data }
+			})
+			.catch((error) => {
+				const messages = error && error.response && error.response.data && error.response.data.messages;
+				swal("Error !", messages, "warning").then(() => {
+					history.go('/account-settings');
+				});
+				console.log('error', error.response.data);
+				return { ...error.response.data }
+			});
+	};
+
 	const detailProfile = (id) => {
 		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -144,6 +172,7 @@ const AuthProvider = (props) => {
 				signIn,
 				signUp,
 				editProfile,
+				editPassword,
 				detailProfile,
 				user,
 				isAuthenticated
