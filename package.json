@@ -10,6 +10,7 @@
 		"dayjs": "^1.8.28",
 		"enquire-js": "^0.1.0",
 		"js-cookie": "^2.2.1",
+		"jwt-decode": "^3.1.2",
 		"little-state-machine": "^3.0.2",
 		"lodash": "^4.17.15",
 		"moment": "^2.25.3",

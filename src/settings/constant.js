@@ -31,6 +31,7 @@ export const LOGIN_PAGE = '/sign-in';
 export const REGISTRATION_PAGE = '/sign-up';
 export const CHANGE_PASSWORD_PAGE = '/change-password';
 export const FORGET_PASSWORD_PAGE = '/forget-password';
+export const CONFIRM_EMAIL_PAGE = '/confirm';
 
 // Muthowif Pages
 export const MUTHOWIF_REGISTRATION_PAGE = '/tambah-muthowif'

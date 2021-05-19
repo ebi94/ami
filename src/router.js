@@ -7,6 +7,7 @@ import {
   LOGIN_PAGE,
   REGISTRATION_PAGE,
   FORGET_PASSWORD_PAGE,
+  CONFIRM_EMAIL_PAGE,
   HOME_PAGE,
   LISTING_POSTS_PAGE,
   SINGLE_POST_PAGE,
@@ -123,6 +124,15 @@ const routes = [
     component: Loadable({
       loader: () =>
         import(/* webpackChunkName: "Muthowif" */ './container/Auth/Muthowif/SignUp'),
+      loading: Loading,
+      modules: ['Muthowif'],
+    }),
+  },
+  {
+    path: `${CONFIRM_EMAIL_PAGE}/:token`,
+    component: Loadable({
+      loader: () =>
+        import(/* webpackChunkName: "Muthowif" */ './container/Auth/Muthowif/ConfirmEmail'),
       loading: Loading,
       modules: ['Muthowif'],
     }),
