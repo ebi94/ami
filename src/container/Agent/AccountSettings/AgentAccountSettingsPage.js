@@ -4,12 +4,14 @@ import { Row, Col, Menu, Avatar } from 'antd';
 import Container from 'components/UI/Container/Container.style';
 import AgentCreateOrUpdateForm from './AgentCreateOrUpdateForm';
 import AgentPictureChangeForm from './AgentPictureChangeForm';
+import AgentUploadDocumentForm from "./AgentUploadDocumentForm";
 import ChangePassWord from './ChangePassWordForm';
 import { AuthContext } from 'context/AuthProvider';
 import {
   AGENT_IMAGE_EDIT_PAGE,
   AGENT_PASSWORD_CHANGE_PAGE,
   AGENT_PROFILE_PAGE,
+  AGENT_UPLOAD_DOCUMENT,
 } from 'settings/constant';
 import AccountSettingWrapper, {
   AccountSidebar,
@@ -39,6 +41,11 @@ const AccountSettingNavLink = (props) => {
             Change Photos
           </NavLink>
         </Menu.Item>
+        <Menu.Item key="4">
+          <NavLink to={`${match.url}${AGENT_UPLOAD_DOCUMENT}`}>
+            Upload Document
+          </NavLink>
+        </Menu.Item>
         <Menu.Item key="3">
           <NavLink to={`${match.url}${AGENT_PASSWORD_CHANGE_PAGE}`}>
             Change Password
@@ -61,6 +68,10 @@ const AccountSettingRoute = (props) => {
       <Route
         path={`${match.path}${AGENT_PASSWORD_CHANGE_PAGE}`}
         component={ChangePassWord}
+      />
+      <Route
+        path={`${match.path}${AGENT_UPLOAD_DOCUMENT}`}
+        component={AgentUploadDocumentForm}
       />
     </FromWrapper>
   );
