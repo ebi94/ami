@@ -26,7 +26,8 @@ import HeaderWrapper, {
 } from './Header.style';
 
 import amiLogo from 'assets/images/AMI-Square.png';
-const avatarImg = `http://s3.amazonaws.com/redqteam.com/isomorphic-reloaded-image/profilepic.png`;
+import imageEmpty from 'assets/images/profile-empty.png';
+// const avatarImg = `http://s3.amazonaws.com/redqteam.com/isomorphic-reloaded-image/profilepic.png`;
 
 const LogoIcon = () => (
   <svg width="25" height="27.984" viewBox="0 0 25 27.984">
@@ -45,6 +46,11 @@ export default withRouter(function Header({ location }) {
   const { loggedIn, user } = useContext(AuthContext);
   const { width } = useWindowSize();
   const [state, setState] = useState(false);
+
+  const dataU = localStorage.getItem('dataUser');
+	const dataUser = JSON.parse(dataU);
+  const avatarImg = dataUser && dataUser.photoProfileUrl ? dataUser.photoProfileUrl : imageEmpty;
+
   console.log('user context', user);
   const sidebarHandler = () => {
     setState(!state);

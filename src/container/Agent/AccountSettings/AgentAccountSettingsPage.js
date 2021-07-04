@@ -21,6 +21,7 @@ import AccountSettingWrapper, {
   AgentName,
   FromWrapper,
 } from './AccountSettings.style';
+import imageEmpty from 'assets/images/profile-empty.png';
 
 const AccountSettingNavLink = (props) => {
   const { match } = props;
@@ -81,6 +82,7 @@ export default function AgentAccountSettingsPage(props) {
   const { loggedIn, user } = useContext(AuthContext);
   const dataU = localStorage.getItem('dataUser');
 	const dataUser = JSON.parse(dataU);
+  const photoProfile = dataUser && dataUser.photoProfileUrl ? dataUser.photoProfileUrl : imageEmpty;
   return (
     <AccountSettingWrapper>
       <Container fullWidth={true}>
@@ -89,8 +91,8 @@ export default function AgentAccountSettingsPage(props) {
             <AccountSidebar>
               <AgentAvatar>
                 <Avatar
-                  src="http://s3.amazonaws.com/redqteam.com/isomorphic-reloaded-image/profilepic.png"
-                  alt="avatar"
+                  src={photoProfile}
+                  alt={dataUser && dataUser.firstName}
                 />
                 <ContentWrapper>
                   <AgentName>{dataUser.firstName}</AgentName>

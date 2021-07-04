@@ -33,6 +33,7 @@ import AgentDetailsPage, {
 	SocialAccount,
 	NavigationArea,
 } from './AgentDetails.style';
+import imageEmpty from 'assets/images/profile-empty.png';
 
 const ProfileNavigation = (props) => {
 	const { match, className } = props;
@@ -101,6 +102,7 @@ const AgentProfileInfo = () => {
 	} = data[0];
 	console.log('user detail', user)
 	const username = `${dataUser.firstName} ${dataUser.lastName}`;
+	const profilePic = dataUser && dataUser.photoProfileUrl ? dataUser.photoProfileUrl : imageEmpty;
 
 	return (
 		<Fragment>
@@ -113,7 +115,7 @@ const AgentProfileInfo = () => {
 				<Container fluid={true}>
 					<ProfileImage>
 						{profile_pic ? (
-							<Image src={profile_pic.url} alt="Profile Pic" />
+							<Image src={profilePic} alt={username} />
 						) : (
 							<ProfilePicLoader />
 						)}

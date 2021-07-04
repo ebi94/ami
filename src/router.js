@@ -137,6 +137,15 @@ const routes = [
       modules: ['Muthowif'],
     }),
   },
+  {
+    path: AGENT_ACCOUNT_SETTINGS_PAGE,
+    component: Loadable({
+      loader: () =>
+        import(/* webpackChunkName: "Muthowif" */ './container/Agent/AccountSettings/AgentAccountSettingsPage'),
+      loading: Loading,
+      modules: ['Muthowif'],
+    }),
+  },
 ];
 
 /**
@@ -152,16 +161,6 @@ const AddListing = Loadable({
   loading: Loading,
   modules: ['AddListing'],
 });
-
-const AgentAccountSettingsPage = Loadable({
-  loader: () =>
-    import(
-      /* webpackChunkName: "AgentAccountSettingsPage" */ './container/Agent/AccountSettings/AgentAccountSettingsPage'
-    ),
-  loading: Loading,
-  modules: ['AgentAccountSettingsPage'],
-});
-
 /**
  *
  * Not Found Route Component
@@ -203,10 +202,6 @@ const Routes = () => {
           <Route key={path} path={path} exact={exact} component={component} />
         ))}
         <ProtectedRoute path={ADD_HOTEL_PAGE} component={AddListing} />
-        <ProtectedRoute
-          path={AGENT_ACCOUNT_SETTINGS_PAGE}
-          component={AgentAccountSettingsPage}
-        />
         <Route component={NotFound} />
       </Switch>
     </Layout>

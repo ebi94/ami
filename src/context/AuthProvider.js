@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
-import { fs } from 'fs';
 
 export const AuthContext = React.createContext();
 
@@ -41,7 +40,8 @@ const AuthProvider = (props) => {
 				const messages = response && response.data && response.data.messages;
 				const dataUser = response && response.data && response.data.data;
 				const token = response && response.data && response.data.accessToken;
-				localStorage.setItem('token', token)
+				localStorage.setItem('token', token);
+				localStorage.setItem('id', dataUser && dataUser.id)
 				swal("Login Berhasil", messages, "success").then(() => {
 					setUser(dataUser);
 					localStorage.setItem('dataUser', JSON.stringify(dataUser));
@@ -91,7 +91,7 @@ const AuthProvider = (props) => {
 			email: params.email,
 			gender: params.agentGender,
 			address: params.address,
-			// dateOfBirthday: params,dateOfBirthday,
+			dateOfBirthday: params.dateOfBirthday,
 			describeProfile: params.describeYourself,
 			password: params.password
 

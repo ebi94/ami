@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useState } from 'react';
+import moment from 'moment';
 import { useForm, Controller } from 'react-hook-form';
 import { Row, Col, Input, Select, Button, Spin } from 'antd';
 import FormControl from 'components/UI/FormControl/FormControl';
@@ -12,6 +13,8 @@ export default () => {
 	const dataU = localStorage.getItem('dataUser');
 	const dataUser = JSON.parse(dataU);
 
+	const dateFormat = 'YYYY-MM-DD';
+
 	const [loading, setLoading] = useState(false);
 
 	const genderOptions = [
@@ -21,7 +24,7 @@ export default () => {
 
 	const onSubmit = (data) => {
 		setLoading(true)
-		const id = dataUser && dataUser.id;
+		const id = localStorage.getItem('id');
 		editProfile(id, data);
 	};
 
@@ -78,7 +81,7 @@ export default () => {
 								as={<DatePicker />}
 								id="dateOfBirthday"
 								name="dateOfBirthday"
-								defaultValue=""
+								defaultValue={moment(dataUser.dateOfBirthday, dateFormat)} format={dateFormat}
 								control={control}
 								rules={{ required: true }}
 								disabled={loading}

@@ -13,7 +13,7 @@ import Wrapper, {
   BannerWrapper,
 } from '../Auth.style';
 // demo image
-import signInImage from 'assets/images/login-page-bg.jpg';
+import signInImage from 'assets/images/banner/bg4.jpg';
 import amiLogo from 'assets/images/AMI-Square.png';
 
 const SignIn = () => {
