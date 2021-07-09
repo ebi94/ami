@@ -7,6 +7,7 @@ import MisiCard from 'components/MisiCard/MisiCard';
 import JoinCard from 'components/JoinCard/JoinCard';
 import SignupCard from 'components/SignupCard/SignupCard';
 import ContactCard from 'components/ContactCard/ContactCard';
+import WhatsappChat from 'components/WhatsappChat/WhatsappChat';
 import Article from '../Article/Article';
 import ImageCarousel from './ImageCarousel/ImageCarousel';
 
@@ -26,6 +27,7 @@ const Home = () => {
                 description="JOINT US TO PROFESIONAL TEAM"    
             />
             <WelcomeCard 
+                id="tentang-kami"
                 title="Tentang Kami"
                 description="
                     Asosiasi ini terbentuk melihat bahwa para tenaga kerja
@@ -65,6 +67,7 @@ const Home = () => {
             </div> */}
             <SignupCard />
             <ContactCard />
+            <WhatsappChat />
         </>
     );
 };
