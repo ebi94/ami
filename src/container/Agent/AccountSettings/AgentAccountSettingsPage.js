@@ -80,9 +80,10 @@ const AccountSettingRoute = (props) => {
 
 export default function AgentAccountSettingsPage(props) {
   const { loggedIn, user } = useContext(AuthContext);
+  const baseUrl = process.env.REACT_APP_BACKEND_API;
   const dataU = localStorage.getItem('dataUser');
 	const dataUser = JSON.parse(dataU);
-  const photoProfile = dataUser && dataUser.photoProfileUrl ? dataUser.photoProfileUrl : imageEmpty;
+  const photoProfile = dataUser && dataUser.photoProfileUrl ? `${baseUrl}/images/photo/${dataUser.photoProfileUrl}` : imageEmpty;
   return (
     <AccountSettingWrapper>
       <Container fullWidth={true}>

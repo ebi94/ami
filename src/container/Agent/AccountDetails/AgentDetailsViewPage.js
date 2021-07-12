@@ -34,6 +34,7 @@ import AgentDetailsPage, {
 	NavigationArea,
 } from './AgentDetails.style';
 import imageEmpty from 'assets/images/profile-empty.png';
+import defaultBackground from 'assets/images/background.jpg';
 
 const ProfileNavigation = (props) => {
 	const { match, className } = props;
@@ -90,6 +91,8 @@ const AgentProfileInfo = () => {
 	const { data, loading } = useDataApi('/data/agent.json');
 	const { user } = useContext(AuthContext);
 	if (isEmpty(data) || loading) return <Loader />;
+
+	const baseUrl = process.env.REACT_APP_BACKEND_API;
 	const dataU = localStorage.getItem('dataUser');
 	const dataUser = JSON.parse(dataU);
 	const {
@@ -102,13 +105,14 @@ const AgentProfileInfo = () => {
 	} = data[0];
 	console.log('user detail', user)
 	const username = `${dataUser.firstName} ${dataUser.lastName}`;
-	const profilePic = dataUser && dataUser.photoProfileUrl ? dataUser.photoProfileUrl : imageEmpty;
+	const profilePic = dataUser && dataUser.photoProfileUrl ? `${baseUrl}/images/photo/${dataUser.photoProfileUrl}` : imageEmpty;
+	const backgroundPic = dataUser && dataUser.backgroundUrl ? `${baseUrl}/images/photo/${dataUser.backgroundUrl}` : defaultBackground;
 
 	return (
 		<Fragment>
 			<BannerSection
 				style={{
-					background: `url(${cover_pic.url}) center center / cover no-repeat`,
+					background: `url(${backgroundPic}) center center / cover no-repeat`,
 				}}
 			/>
 			<UserInfoArea>

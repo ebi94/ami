@@ -47,9 +47,11 @@ export default withRouter(function Header({ location }) {
   const { width } = useWindowSize();
   const [state, setState] = useState(false);
 
+  const baseUrl = process.env.REACT_APP_BACKEND_API;
+
   const dataU = localStorage.getItem('dataUser');
-	const dataUser = JSON.parse(dataU);
-  const avatarImg = dataUser && dataUser.photoProfileUrl ? dataUser.photoProfileUrl : imageEmpty;
+  const dataUser = JSON.parse(dataU);
+  const avatarImg = dataUser && dataUser.photoProfileUrl ? `${baseUrl}/images/photo/${dataUser.photoProfileUrl}` : imageEmpty;
 
   console.log('user context', user);
   const sidebarHandler = () => {

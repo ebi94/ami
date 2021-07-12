@@ -180,6 +180,74 @@ const AuthProvider = (props) => {
 			});
 	}
 
+	const uploadPhoto = (id, image) => {
+		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+	
+		const data = new FormData();
+		data.append("imagephoto", image);
+
+		console.log('data', data)
+		const config = {
+			method: 'patch',
+			url: baseUrl + `/muthowif/${id}/upload-photo`,
+			data: data
+		};
+
+		axios(config)
+			.then(function (response) {
+				const messages = response && response.data && response.data.messages;
+				swal("Terima Kasih", messages, "success").then(() => {
+					history.go('/account-settings');
+				});
+				console.log('response', response);
+				return { ...response.data }
+			})
+			.catch(function (error) {
+				const messages = error && error.response && error.response.data && error.response.data.messages;
+				swal("Error !", messages, "warning").then(() => {
+					history.go('/account-settings');
+				});
+				console.log('error', error.response.data);
+				return { ...error.response.data }
+			});
+	};
+
+	const uploadBackground = (id, image) => {
+		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+	
+		const data = new FormData();
+		data.append("imagebackground", image);
+
+		console.log('data', data)
+		const config = {
+			method: 'patch',
+			url: baseUrl + `/muthowif/${id}/upload-background`,
+			data: data
+		};
+
+		axios(config)
+			.then(function (response) {
+				const messages = response && response.data && response.data.messages;
+				swal("Terima Kasih", messages, "success").then(() => {
+					history.go('/account-settings');
+				});
+				console.log('response', response);
+				return { ...response.data }
+			})
+			.catch(function (error) {
+				const messages = error && error.response && error.response.data && error.response.data.messages;
+				swal("Error !", messages, "warning").then(() => {
+					history.go('/account-settings');
+				});
+				console.log('error', error.response.data);
+				return { ...error.response.data }
+			});
+	};
+
 	const uploadKtp = (id, image) => {
 		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -261,6 +329,8 @@ const AuthProvider = (props) => {
 				confirmEmail,
 				user,
 				isAuthenticated,
+				uploadPhoto,
+				uploadBackground,
 				uploadKtp,
 				uploadNpwp
 			}}
