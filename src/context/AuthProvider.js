@@ -46,7 +46,7 @@ const AuthProvider = (props) => {
 					setUser(dataUser);
 					localStorage.setItem('dataUser', JSON.stringify(dataUser));
 					setLoggedIn(true);
-					history.push(`/profile`);
+					history.push(`/dashboard`);
 				});
 				return { ...response.data }
 			})
