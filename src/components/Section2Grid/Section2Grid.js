@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'antd';
 import Box from 'components/UI/Box/Box';
 import Text from 'components/UI/Text/Text';
-import ReservationCard from '../ReservationCard/ReservationCard';
+import ReviewCard from '../ReviewCard/ReviewCard';
 const LoadMore = ({
   handleLoadMore,
   showButton,
@@ -27,7 +27,7 @@ const LoadMore = ({
   );
 };
 
-export default function SectionGrid({
+export default function Section2Grid({
   data = [],
   totalItem,
   limit,
@@ -43,7 +43,7 @@ export default function SectionGrid({
   loadMoreStyle,
   link,
 }) {
-  const n = limit ? Number(1) : 1;
+  const n = limit ? Number(limit) : 1;
   const limits = Array(n).fill(0);
 
   let showButton = data.length < totalItem;
@@ -60,7 +60,7 @@ export default function SectionGrid({
                 key={item.id}
                 {...columnStyle}
               >
-                <ReservationCard link={link} {...item} />
+                <ReviewCard link={link} {...item} />
               </Box>
             );
           })
@@ -96,7 +96,7 @@ export default function SectionGrid({
   );
 }
 
-SectionGrid.propTypes = {
+Section2Grid.propTypes = {
   data: PropTypes.array.isRequired,
   totalItem: PropTypes.number,
   columnWidth: PropTypes.oneOfType([
@@ -116,7 +116,7 @@ SectionGrid.propTypes = {
   loadMoreStyle: PropTypes.object,
 };
 
-SectionGrid.defaultProps = {
+Section2Grid.defaultProps = {
   rowStyle: {
     flexBox: true,
     flexWrap: 'wrap',

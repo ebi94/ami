@@ -33,7 +33,7 @@ const ProfileMenu = ({ avatar, history }) => {
 
       <Menu className={`dropdown-menu ${state ? 'active' : 'hide'}`}>
         <Menu.Item onClick={closeDropdown} key="0">
-          <NavLink to={AGENT_PROFILE_PAGE}>View Profile</NavLink>
+          <NavLink to={AGENT_PROFILE_PAGE}>View Dashboard</NavLink>
         </Menu.Item>
         {/* <Menu.Item onClick={closeDropdown} key="1">
           <NavLink to={ADD_HOTEL_PAGE}>Add Hotel</NavLink>

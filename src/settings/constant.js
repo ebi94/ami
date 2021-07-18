@@ -12,7 +12,7 @@ export const HOME_ABOUT_US = '/about-us';
 export const HOME_CONTACT_US = '/contact-us';
 
 // Agent Profile Page Section
-export const AGENT_PROFILE_PAGE = '/profile';
+export const AGENT_PROFILE_PAGE = '/dashboard';
 export const AGENT_ACCOUNT_SETTINGS_PAGE = '/account-settings';
 export const AGENT_PROFILE_EDIT_PAGE = '/edit';
 export const AGENT_IMAGE_EDIT_PAGE = '/change-image';
@@ -20,7 +20,9 @@ export const AGENT_PASSWORD_CHANGE_PAGE = '/change-password';
 export const AGENT_UPLOAD_DOCUMENT = '/upload-document';
 export const AGENT_PROFILE_DELETE = '/delete';
 export const AGENT_PROFILE_FAVOURITE = '/favourite-post';
-export const AGENT_PROFILE_CONTACT = '/contact';
+export const AGENT_DASHBOARD_PAGE = '/dashboard';
+export const AGENT_DASHBOARD_REVIEW = '/review';
+export const AGENT_DASHBOARD_CONTACT = '/contact';
 
 // Other Pages
 export const PRICING_PLAN_PAGE = '/pricing-plan';

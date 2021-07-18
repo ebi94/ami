@@ -97,7 +97,7 @@ export default function AgentAccountSettingsPage(props) {
                 />
                 <ContentWrapper>
                   <AgentName>{dataUser.firstName}</AgentName>
-                  <Link to={AGENT_PROFILE_PAGE}>View profile</Link>
+                  <Link to={AGENT_PROFILE_PAGE}>View Dashboard</Link>
                 </ContentWrapper>
               </AgentAvatar>
               <AccountSettingNavLink {...props} />

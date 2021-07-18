@@ -6,7 +6,7 @@ const WhatsappChat = () => {
 
 
     return (
-        <div style={{ position: 'fixed', bottom: 35, right: 25 }}>
+        <div style={{ position: 'fixed', bottom: 35, right: 25, zIndex: 100 }}>
             <Button
                 type="primary"
                 size="large"

@@ -23,6 +23,9 @@ import {
 	ADD_HOTEL_PAGE,
 	AGENT_PROFILE_FAVOURITE,
 	AGENT_PROFILE_CONTACT,
+	AGENT_DASHBOARD_PAGE,
+	AGENT_DASHBOARD_REVIEW,
+	AGENT_DASHBOARD_CONTACT
 } from 'settings/constant';
 import AgentDetailsPage, {
 	BannerSection,
@@ -35,6 +38,7 @@ import AgentDetailsPage, {
 } from './AgentDetails.style';
 import imageEmpty from 'assets/images/profile-empty.png';
 import defaultBackground from 'assets/images/background.jpg';
+import WhatsappChat from 'components/WhatsappChat/WhatsappChat';
 
 const ProfileNavigation = (props) => {
 	const { match, className } = props;
@@ -49,12 +53,12 @@ const ProfileNavigation = (props) => {
             </NavLink>
 					</Menu.Item>
 					<Menu.Item key="1">
-						<NavLink to={`${match.url}${AGENT_PROFILE_FAVOURITE}`}>
+						<NavLink to={`${match.url}${AGENT_DASHBOARD_REVIEW}`}>
 							Ulasan
             </NavLink>
 					</Menu.Item>
 					<Menu.Item key="2">
-						<NavLink to={`${match.url}${AGENT_PROFILE_CONTACT}`}>
+						<NavLink to={`${match.url}${AGENT_DASHBOARD_CONTACT}`}>
 							Kontak
             </NavLink>
 					</Menu.Item>
@@ -76,11 +80,11 @@ const ProfileRoute = (props) => {
 		<Container fluid={true}>
 			<Route exact path={`${match.path}`} component={AgentItemLists} />
 			<Route
-				path={`${match.path}${AGENT_PROFILE_FAVOURITE}`}
+				path={`${match.path}${AGENT_DASHBOARD_REVIEW}`}
 				component={AgentFavItemLists}
 			/>
 			<Route
-				path={`${match.path}${AGENT_PROFILE_CONTACT}`}
+				path={`${match.path}${AGENT_DASHBOARD_CONTACT}`}
 				component={AgentContact}
 			/>
 		</Container>
@@ -172,6 +176,7 @@ export default function AgentDetailsViewPage(props) {
 				<AgentProfileInfo />
 				<ProfileNavigation {...props} />
 				<ProfileRoute {...props} />
+				<WhatsappChat />
 			</AuthProvider>
 		</AgentDetailsPage>
 	);

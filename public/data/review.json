@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Jhon",
+        "rating": 5,
+        "review": "Pelayanan yang sangat baik"
+    },
+    {
+        "id": 2,
+        "name": "Farhad",
+        "rating": 4,
+        "review": "Alhamdulillah, muthowif sangat baik dan ramah"
+    },
+    {
+        "id": 3,
+        "name": "Faza",
+        "rating": 5,
+        "review": "Terima kasih, sangat baik pelayanannya"
+    },
+    {
+        "id": 4,
+        "name": "Ahmad",
+        "rating": 5,
+        "review": "Pelayanan yang sangat baik"
+    },
+    {
+        "id": 5,
+        "name": "Faris",
+        "rating": 5,
+        "review": "Pelayanan yang sangat baik"
+    },
+    {
+        "id": 6,
+        "name": "Febri",
+        "rating": 5,
+        "review": "Pelayanan yang sangat baik"
+    },
+    {
+        "id": 7,
+        "name": "Maliq",
+        "rating": 5,
+        "review": "Pelayanan yang sangat baik"
+    }
+]

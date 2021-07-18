@@ -139,6 +139,82 @@ export const PostPlaceholder = props => {
   );
 };
 
+export const ReservationPlaceholder = props => {
+  return (
+    <ContentLoader
+      height={200}
+      width={900}
+      speed={2}
+      className="placeholder"
+      backgroundColor="#f3f3f3"
+      foregroundColor="#e9e8ec"
+      {...props}
+    >
+      <rect x="605.25" y="39.6" rx="0" ry="0" width="66" height="41" />
+      <rect x="639.25" y="59.6" rx="0" ry="0" width="0" height="0" />
+      <rect x="518.25" y="38.6" rx="0" ry="0" width="66" height="41" />
+      <rect x="435.25" y="40.6" rx="0" ry="0" width="66" height="41" />
+      <rect x="264.25" y="216.6" rx="0" ry="0" width="0" height="0" />
+      <rect x="399.25" y="531.94" rx="0" ry="0" width="0" height="0" />
+      <rect
+        x="217.25"
+        y="450.94"
+        rx="0"
+        ry="0"
+        width="176.33"
+        height="147.66"
+      />
+      <rect
+        x="415.25"
+        y="449.94"
+        rx="0"
+        ry="0"
+        width="167.17"
+        height="147.66"
+      />
+      <rect
+        x="608.17"
+        y="448.94"
+        rx="0"
+        ry="0"
+        width="171.75"
+        height="147.66"
+      />
+      <rect
+        x="417.25"
+        y="612.94"
+        rx="0"
+        ry="0"
+        width="167.17"
+        height="147.66"
+      />
+      <rect
+        x="609.25"
+        y="612.94"
+        rx="0"
+        ry="0"
+        width="167.17"
+        height="147.66"
+      />
+      <rect
+        x="220.25"
+        y="612.94"
+        rx="0"
+        ry="0"
+        width="174.04"
+        height="147.66"
+      />
+      <rect x="80.63" y="132.61" rx="0" ry="0" width="0" height="0" />
+      <rect x="9.63" y="218.61" rx="0" ry="0" width="183" height="25" />
+      <rect x="8.63" y="258.61" rx="0" ry="0" width="381" height="43" />
+      <rect x="8.63" y="319.61" rx="0" ry="0" width="204" height="24" />
+      <rect x="229.63" y="320.61" rx="0" ry="0" width="164.45" height="23" />
+      <rect x="336.63" y="328.61" rx="0" ry="0" width="0" height="0" />
+      <rect x="213.63" y="397.61" rx="0" ry="0" width="0" height="0" />
+    </ContentLoader>
+  );
+};
+
 export const ProfilePicLoader = () => (
   <ContentLoader
     height={180}

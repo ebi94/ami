@@ -1,0 +1,57 @@
+[
+    {
+        "id": "000001",
+        "startDate": "01-01-2021",
+        "endDate": "08-01-2021",
+        "flightCode": "U6-5084",
+        "travelName": "Tour n Travel",
+        "route": "Jeddah-Jeddah",
+        "airline": "Lion Air",
+        "totalDays": 7,
+        "status": 1
+    },
+    {
+        "id": "000012",
+        "startDate": "01-01-2021",
+        "endDate": "08-01-2021",
+        "flightCode": "U6-5084",
+        "travelName": "Tour n Travel",
+        "route": "Jeddah-Jeddah",
+        "airline": "Lion Air",
+        "totalDays": 7,
+        "status": 2
+    },
+    {
+        "id": "000022",
+        "startDate": "01-01-2021",
+        "endDate": "08-01-2021",
+        "flightCode": "U6-5084",
+        "travelName": "Tour n Travel",
+        "route": "Jeddah-Jeddah",
+        "airline": "Lion Air",
+        "totalDays": 7,
+        "status": 3
+    },
+    {
+        "id": "000032",
+        "startDate": "01-01-2021",
+        "endDate": "08-01-2021",
+        "flightCode": "U6-5084",
+        "travelName": "Tour n Travel",
+        "route": "Jeddah-Jeddah",
+        "airline": "Lion Air",
+        "totalDays": 7,
+        "status": 1
+    },
+    {
+        "id": "000211",
+        "startDate": "01-01-2021",
+        "endDate": "08-01-2021",
+        "flightCode": "U6-5084",
+        "travelName": "Tour n Travel",
+        "route": "Jeddah-Jeddah",
+        "airline": "Lion Air",
+        "totalDays": 7,
+        "status": 1
+    }
+]

@@ -134,7 +134,7 @@ export default withRouter(function Header({ location }) {
                     <Text as="h3" content="Nova Scotia" />
                     <TextLink
                       link={AGENT_PROFILE_PAGE}
-                      content="View Profile"
+                      content="View Dashboard"
                     />
                   </AvatarInfo>
                 </AvatarWrapper>
