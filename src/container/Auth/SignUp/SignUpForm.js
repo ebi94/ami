@@ -26,12 +26,12 @@ export default () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl
-                label="Nama Lengkap"
-                htmlFor="namalengkap"
+                label="Nama Depan"
+                htmlFor="namadepan"
                 error={
-                    errors.username && (
+                    errors.firstname && (
                         <>
-                            {errors.username?.type === 'required' && (
+                            {errors.firstname?.type === 'required' && (
                                 <span>This field is required!</span>
                             )}
                         </>
@@ -40,8 +40,32 @@ export default () => {
             >
                 <Controller
                     as={<Input />}
-                    id="namalengkap"
-                    name="namalengkap"
+                    id="namadepan"
+                    name="namadepan"
+                    defaultValue=""
+                    control={control}
+                    rules={{
+                        required: true,
+                    }}
+                />
+            </FormControl>
+            <FormControl
+                label="Nama Belakang"
+                htmlFor="namabelakang"
+                error={
+                    errors.lastname && (
+                        <>
+                            {errors.lastname?.type === 'required' && (
+                                <span>This field is required!</span>
+                            )}
+                        </>
+                    )
+                }
+            >
+                <Controller
+                    as={<Input />}
+                    id="namabelakang"
+                    name="namabelakang"
                     defaultValue=""
                     control={control}
                     rules={{

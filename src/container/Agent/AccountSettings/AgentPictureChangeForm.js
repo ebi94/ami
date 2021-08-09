@@ -59,7 +59,7 @@ export default function AgentUploadDocumentForm() {
       <FormTitle>Change Photo Profile & Background</FormTitle>
       <Heading content="PHOTO" as="h4" />
       <Image src={imagePHOTO} alt="PHOTO" />
-      <form className="form-container" onSubmit={handleSubmit(onSubmitPhoto)} style={{ marginBottom: 50, marginTop: 25 }}>
+      <form className="form-container" onSubmit={handleSubmit(onSubmitPhoto)} style={{ marginBottom: 10, marginTop: 25 }}>
         <input
           type="file"
           name="imagephoto"
@@ -71,10 +71,14 @@ export default function AgentUploadDocumentForm() {
           {loadingPhoto ? <Spin size="default" /> : "Upload Photo"}
         </Button>
       </form>
+      <Heading content="- Maks 5 mb" as="h5" />
+      <Heading content="- Hanya Gambar (JPG, JPEG, PNG, GIF)" as="h5" />
+      <div style={{marginBottom: 45}}/>
 
       <Heading content="BACKGROUND" as="h4" />
+
       <Image src={imageBACKGROUND} alt="BACKGROUND" />
-      <form className="form-container" onSubmit={handleSubmit(onSubmitBackground)} style={{ marginBottom: 50, marginTop: 25 }}>
+      <form className="form-container" onSubmit={handleSubmit(onSubmitBackground)} style={{ marginBottom: 10, marginTop: 25 }}>
         <input
           type="file"
           name="imagebackground"
@@ -86,6 +90,8 @@ export default function AgentUploadDocumentForm() {
           {loadingBackground ? <Spin size="default" /> : "Upload Background"}
         </Button>
       </form>
+      <Heading content="- Maks 5 mb" as="h5" />
+      <Heading content="- Hanya Gambar (JPG, JPEG, PNG, GIF)" as="h5" />
 
     </AgentPictureUploader>
   );

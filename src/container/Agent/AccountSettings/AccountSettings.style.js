@@ -262,4 +262,13 @@ export const AgentPictureUploader = styled.div`
   }
 `;
 
+
+export const BoxStatus = styled.div`
+  span {
+    position: absolute;
+    right: 30px;
+  }
+`;
+
+
 export default AccountSettingWrapper;
