@@ -5,7 +5,9 @@ import swal from 'sweetalert';
 
 export const AuthContext = React.createContext();
 
-const baseUrl = process.env.REACT_APP_BACKEND_API
+const baseUrl = process.env.REACT_APP_BACKEND_API;
+
+const idMutowhif = localStorage.getItem('id');
 
 const fakeUserData = {
 	id: 1,
@@ -26,6 +28,22 @@ const AuthProvider = (props) => {
 	//   setLoggedIn(true);
 	//   history.push(`/`);
 	// };
+
+	const checkAvailableEmail = (email) => {
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+
+		return axios.get(baseUrl + `/auth/check-email-available/${email}`)
+			.then((response) => {
+				return { ...response.data }
+			})
+			.catch((error) => {
+				const messages = error && error.response && error.response.data && error.response.data.messages;
+				swal("Gagal", messages, "warning");
+				return { ...error.response.data }
+			});
+	};
 
 	const signIn = (params) => {
 		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -56,7 +74,7 @@ const AuthProvider = (props) => {
 				console.log('error', error.response.data);
 				return { ...error.response.data }
 			});
-	}
+	};
 
 	const signUp = (params) => {
 		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -72,12 +90,15 @@ const AuthProvider = (props) => {
 			.then((response) => {
 				const messages = response && response.data && response.data.messages;
 				swal("Terima Kasih", messages, "success").then(() => {
-					history.go(0);
+					history.push('/sign-in');
 				});
-				console.log('response', response);
+				return true;
 			})
 			.catch(function (error) {
-				console.log('error', error);
+				swal("Gagal", "Ups Ada Error ! !", "error").then(() => {
+					history.go(0);
+				});
+				return false;
 			});
 	};
 
@@ -185,11 +206,10 @@ const AuthProvider = (props) => {
 		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-	
+
 		const data = new FormData();
 		data.append("imagephoto", image);
 
-		console.log('data', data)
 		const config = {
 			method: 'patch',
 			url: baseUrl + `/muthowif/${id}/upload-photo`,
@@ -199,10 +219,12 @@ const AuthProvider = (props) => {
 		axios(config)
 			.then(function (response) {
 				const messages = response && response.data && response.data.messages;
-				swal("Terima Kasih", messages, "success").then(() => {
+				swal("Terima Kasih", messages, "success").then(async () => {
+					const resDetail = await detailProfile(idMutowhif);
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
-				console.log('response', response);
 				return { ...response.data }
 			})
 			.catch(function (error) {
@@ -219,11 +241,10 @@ const AuthProvider = (props) => {
 		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-	
+
 		const data = new FormData();
 		data.append("imagebackground", image);
 
-		console.log('data', data)
 		const config = {
 			method: 'patch',
 			url: baseUrl + `/muthowif/${id}/upload-background`,
@@ -233,10 +254,12 @@ const AuthProvider = (props) => {
 		axios(config)
 			.then(function (response) {
 				const messages = response && response.data && response.data.messages;
-				swal("Terima Kasih", messages, "success").then(() => {
+				swal("Terima Kasih", messages, "success").then(async () => {
+					const resDetail = await detailProfile(idMutowhif);
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
-				console.log('response', response);
 				return { ...response.data }
 			})
 			.catch(function (error) {
@@ -253,11 +276,10 @@ const AuthProvider = (props) => {
 		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-	
+
 		const data = new FormData();
 		data.append("imagektp", image);
 
-		console.log('data', data)
 		const config = {
 			method: 'patch',
 			url: baseUrl + `/muthowif/${id}/upload-ktp`,
@@ -275,7 +297,10 @@ const AuthProvider = (props) => {
 			})
 			.catch(function (error) {
 				const messages = error && error.response && error.response.data && error.response.data.messages;
-				swal("Error !", messages, "warning").then(() => {
+				swal("Terima Kasih", messages, "success").then(async () => {
+					const resDetail = await detailProfile(idMutowhif);
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
 				console.log('error', error.response.data);
@@ -287,11 +312,10 @@ const AuthProvider = (props) => {
 		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-	
+
 		const data = new FormData();
 		data.append("imagenpwp", image);
 
-		console.log('data', data)
 		const config = {
 			method: 'patch',
 			url: baseUrl + `/muthowif/${id}/upload-npwp`,
@@ -299,15 +323,17 @@ const AuthProvider = (props) => {
 		};
 
 		axios(config)
-			.then(function (response) {
+			.then((response) => {
 				const messages = response && response.data && response.data.messages;
-				swal("Terima Kasih", messages, "success").then(() => {
+				swal("Terima Kasih", messages, "success").then(async () => {
+					const resDetail = await detailProfile(idMutowhif);
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
-				console.log('response', response);
 				return { ...response.data }
 			})
-			.catch(function (error) {
+			.catch((error) => {
 				const messages = error && error.response && error.response.data && error.response.data.messages;
 				swal("Error !", messages, "warning").then(() => {
 					history.go('/account-settings');
@@ -321,24 +347,25 @@ const AuthProvider = (props) => {
 		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-	
-		const data = new FormData();
-		data.append("imagenpwp", image);
 
-		console.log('data', data)
+		const data = new FormData();
+		data.append("imageBPJS", image);
+
 		const config = {
 			method: 'patch',
-			url: baseUrl + `/muthowif/${id}/upload-npwp`,
+			url: baseUrl + `/muthowif/${id}/upload-bpjs`,
 			data: data
 		};
 
 		axios(config)
 			.then(function (response) {
 				const messages = response && response.data && response.data.messages;
-				swal("Terima Kasih", messages, "success").then(() => {
+				swal("Terima Kasih", messages, "success").then(async () => {
+					const resDetail = await detailProfile(idMutowhif);
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
-				console.log('response', response);
 				return { ...response.data }
 			})
 			.catch(function (error) {
@@ -355,24 +382,25 @@ const AuthProvider = (props) => {
 		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-	
-		const data = new FormData();
-		data.append("imagenpwp", image);
 
-		console.log('data', data)
+		const data = new FormData();
+		data.append("imageIqoma", image);
+
 		const config = {
 			method: 'patch',
-			url: baseUrl + `/muthowif/${id}/upload-npwp`,
+			url: baseUrl + `/muthowif/${id}/upload-iqoma`,
 			data: data
 		};
 
 		axios(config)
 			.then(function (response) {
 				const messages = response && response.data && response.data.messages;
-				swal("Terima Kasih", messages, "success").then(() => {
+				swal("Terima Kasih", messages, "success").then(async () => {
+					const resDetail = await detailProfile(idMutowhif);
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
-				console.log('response', response);
 				return { ...response.data }
 			})
 			.catch(function (error) {
@@ -389,24 +417,25 @@ const AuthProvider = (props) => {
 		axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-	
-		const data = new FormData();
-		data.append("imagenpwp", image);
 
-		console.log('data', data)
+		const data = new FormData();
+		data.append("imagePassport", image);
+
 		const config = {
 			method: 'patch',
-			url: baseUrl + `/muthowif/${id}/upload-npwp`,
+			url: baseUrl + `/muthowif/${id}/upload-passport`,
 			data: data
 		};
 
 		axios(config)
 			.then(function (response) {
 				const messages = response && response.data && response.data.messages;
-				swal("Terima Kasih", messages, "success").then(() => {
+				swal("Terima Kasih", messages, "success").then(async () => {
+					const resDetail = await detailProfile(idMutowhif);
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
-				console.log('response', response);
 				return { ...response.data }
 			})
 			.catch(function (error) {
@@ -438,7 +467,8 @@ const AuthProvider = (props) => {
 				uploadNpwp,
 				uploadBPJS,
 				uploadIqoma,
-				uploadPassport
+				uploadPassport,
+				checkAvailableEmail
 			}}
 		>
 			<>{props.children}</>

@@ -8,16 +8,24 @@ import { AuthContext } from 'context/AuthProvider';
 import { FieldWrapper, SwitchWrapper, Label } from '../Auth.style';
 
 export default () => {
-    const { signUp, loggedIn } = useContext(AuthContext);
+    const { signUp, loggedIn, checkAvailableEmail } = useContext(AuthContext);
     const { control, watch, errors, handleSubmit } = useForm({
         mode: 'onChange',
     });
     const [loading, setLoading] = useState(false);
     const password = watch('password');
     const confirmPassword = watch('confirmPassword');
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         setLoading(true)
-        signUp(data);
+        const checkEmail = await checkAvailableEmail(data.email);
+        if (checkEmail && checkEmail.status === 'OK') {
+            const res = await signUp(data);
+            if (res && res.status === 'OK') {
+                setLoading(false);
+            }
+        } else {
+            setLoading(false);
+        };
     };
     if (loggedIn) {
         return <Redirect to={{ pathname: '/' }} />;
@@ -47,6 +55,7 @@ export default () => {
                     rules={{
                         required: true,
                     }}
+                    disabled={loading}
                 />
             </FormControl>
             <FormControl
@@ -71,6 +80,7 @@ export default () => {
                     rules={{
                         required: true,
                     }}
+                    disabled={loading}
                 />
             </FormControl>
             <FormControl
@@ -100,6 +110,7 @@ export default () => {
                         required: true,
                         pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
                     }}
+                    disabled={loading}
                 />
             </FormControl>
             <FormControl
@@ -128,6 +139,7 @@ export default () => {
                     rules={{
                         required: true,
                     }}
+                    disabled={loading}
                 />
             </FormControl>
             <FormControl
@@ -156,6 +168,7 @@ export default () => {
                     id="password"
                     name="password"
                     rules={{ required: true, minLength: 6, maxLength: 20 }}
+                    disabled={loading}
                 />
             </FormControl>
             <FormControl
@@ -174,86 +187,9 @@ export default () => {
                     control={control}
                     id="confirmPassword"
                     name="confirmPassword"
+                    disabled={loading}
                 />
             </FormControl>
-            {/* <FormControl
-        label="Foto"
-        htmlFor="foto"
-        error={
-          errors.foto && (
-            <>
-              {errors.foto?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-            </>
-          )
-        }
-      >
-        <Controller
-          as={  
-            <Upload>
-              <Button icon={<UploadOutlined />}>Unggah</Button>
-            </Upload>
-          }
-          id="foto"
-          name="foto"
-          defaultValue=""
-          control={control}
-          rules={{
-            required: true,
-          }}
-        />
-      </FormControl>
-      <FormControl
-        label="Sertifikat"
-        htmlFor="foto"
-        error={
-          errors.foto && (
-            <>
-              {errors.foto?.type === 'required' && (
-                <span>This field is required!</span>
-              )}
-            </>
-          )
-        }
-      >
-        <Controller
-          as={  
-            <Upload>
-              <Button icon={<UploadOutlined />}>Unggah</Button>
-            </Upload>
-          }
-          id="foto"
-          name="foto"
-          defaultValue=""
-          control={control}
-          rules={{
-            required: true,
-          }}
-        />
-      </FormControl> */}
-            {/* <FieldWrapper>
-        <SwitchWrapper>
-          <Controller
-            as={<Switch />}
-            name="rememberMe"
-            defaultValue={false}
-            valueName="checked"
-            control={control}
-          />
-          <Label>Remember Me</Label>
-        </SwitchWrapper>
-        <SwitchWrapper>
-          <Controller
-            as={<Switch />}
-            name="termsAndConditions"
-            defaultValue={false}
-            valueName="checked"
-            control={control}
-          />
-          <Label>I agree with terms and conditions</Label>
-        </SwitchWrapper>
-      </FieldWrapper> */}
             <Button
                 className="signin-btn"
                 type="primary"
