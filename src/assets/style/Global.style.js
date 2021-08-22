@@ -818,6 +818,12 @@ const GlobalStyle = createGlobalStyle`
   .ant-spin-dot-item {
     background-color: #f0f0f0 !important;
   }
+
+  @media only screen and (max-width: 767px) {
+    .tag-mobile {
+      position: inherit;
+    }
+  }
 `;
 
 export default GlobalStyle;

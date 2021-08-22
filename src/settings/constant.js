@@ -13,6 +13,7 @@ export const HOME_CONTACT_US = '/contact-us';
 
 // Agent Profile Page Section
 export const AGENT_PROFILE_PAGE = '/dashboard';
+export const AGENT_DETAIL_RESERVATION = '/detail-reservation';
 export const AGENT_ACCOUNT_SETTINGS_PAGE = '/account-settings';
 export const AGENT_PROFILE_EDIT_PAGE = '/edit';
 export const AGENT_IMAGE_EDIT_PAGE = '/change-image';

@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, } from 'react';
+import { useParams } from 'react-router';
 import { useLocation } from 'library/hooks/useLocation';
 import Sticky from 'react-stickynode';
 import { Row, Col, Modal, Button } from 'antd';
@@ -18,6 +19,7 @@ import useDataApi from 'library/hooks/useDataApi';
 import isEmpty from 'lodash/isEmpty';
 
 const SinglePage = ({ match }) => {
+  const { slug } = useParams();
   const { href } = useLocation();
   const [isModalShowing, setIsModalShowing] = useState(false);
   const { width } = useWindowSize();
@@ -49,7 +51,7 @@ const SinglePage = ({ match }) => {
           onClick={() => setIsModalShowing(true)}
           className="image_gallery_button"
         >
-          View Photos
+          View Photos {slug}
         </Button>
         <Modal
           visible={isModalShowing}

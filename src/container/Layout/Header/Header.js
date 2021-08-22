@@ -131,7 +131,7 @@ export default withRouter(function Header({ location }) {
                     <Logo src={avatarImg} />
                   </AvatarImage>
                   <AvatarInfo>
-                    <Text as="h3" content="Nova Scotia" />
+                    <Text as="h3" content={`${dataUser && dataUser.firstName} ${dataUser && dataUser.lastName}`} />
                     <TextLink
                       link={AGENT_PROFILE_PAGE}
                       content="View Dashboard"

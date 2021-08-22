@@ -13,9 +13,14 @@ const MobileMenu = ({ className }) => {
   // auth context
   const { loggedIn, logOut } = useContext(AuthContext);
 
+  function handleLogout() {
+    logOut();
+    window.location.replace('/');
+  }
+
   return (
     <Menu className={className}>
-      <Menu.Item key="0">
+      {/* <Menu.Item key="0">
         <NavLink exact to={HOME_PAGE}>
           Hotels
         </NavLink>
@@ -25,7 +30,7 @@ const MobileMenu = ({ className }) => {
       </Menu.Item>
       <Menu.Item key="2">
         <NavLink to={PRICING_PLAN_PAGE}>Pricing</NavLink>
-      </Menu.Item>
+      </Menu.Item> */}
       {loggedIn && (
         <Menu.Item key="3">
           <NavLink to={AGENT_ACCOUNT_SETTINGS_PAGE}>Account Settings</NavLink>
@@ -33,7 +38,7 @@ const MobileMenu = ({ className }) => {
       )}
       {loggedIn && (
         <Menu.Item key="4">
-          <button onClick={logOut}>Log Out</button>
+          <button onClick={() => handleLogout()}>Log Out</button>
         </Menu.Item>
       )}
     </Menu>

@@ -133,6 +133,30 @@ const AuthProvider = (props) => {
 			});
 	};
 
+	const editPayment = (id, params) => {
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+		axios.patch(baseUrl + '/muthowif/' + id, {
+			bankName: params.bankName,
+			bankNumber: params.bankNumber,
+			bankFullName: params.bankFullName
+
+		})
+			.then(async (response) => {
+				const resDetail = await detailProfile(id)
+				const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+				localStorage.setItem('dataUser', JSON.stringify(dataDetail));
+				const messages = response && response.data && response.data.messages;
+				swal("Terima Kasih", messages, "success").then(() => {
+					history.go('/account-settings/payment-setting');
+				});
+			})
+			.catch(function (error) {
+				console.log('error', error);
+			});
+	};
+
 	const editPassword = (email, params) => {
 		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -172,7 +196,33 @@ const AuthProvider = (props) => {
 			.catch((error) => {
 				return error;
 			});
-	}
+	};
+
+	const detailReservation = (id) => {
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+		return axios.get(baseUrl + '/travelReservation/detail/' + id)
+			.then((response) => {
+				return response;
+			})
+			.catch((error) => {
+				return error;
+			});
+	};
+
+	const detailTravel = (id) => {
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+		return axios.get(baseUrl + '/travel/' + id)
+			.then((response) => {
+				return response;
+			})
+			.catch((error) => {
+				return error;
+			});
+	};
 
 	const logOut = () => {
 		setUser(null);
@@ -456,6 +506,7 @@ const AuthProvider = (props) => {
 				signIn,
 				signUp,
 				editProfile,
+				editPayment,
 				editPassword,
 				detailProfile,
 				confirmEmail,
@@ -468,7 +519,9 @@ const AuthProvider = (props) => {
 				uploadBPJS,
 				uploadIqoma,
 				uploadPassport,
-				checkAvailableEmail
+				checkAvailableEmail,
+				detailReservation,
+				detailTravel
 			}}
 		>
 			<>{props.children}</>

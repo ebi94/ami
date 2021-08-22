@@ -38,6 +38,7 @@ const responsive = {
 
 const PostGrid = ({
   travelId,
+  travelName,
   startDate,
   endDate,
   route,
@@ -57,36 +58,41 @@ const PostGrid = ({
 }) => {
   const badgeStatus = () => {
     switch (status) {
-      case null:
-        return {
-          color: "#2db7f5",
-          text: "Booked"
-        };
-        break;
-      case 0:
-        return {
-          color: "#2db7f5",
-          text: "Booked"
-        };
-        break;
       case 1:
         return {
-          color: "#2db7f5",
+          color: "#17a2b8",
           text: "Booked"
         };
         break;
       case 2:
         return {
-          color: "#f50",
-          text: "Cancel"
+          color: "#0779fb",
+          text: "Paid"
         };
         break;
       case 3:
         return {
-          color: "#87d068",
-          text: "Accepted"
+          color: "#41a846",
+          text: "Confirmed"
         };
         break;
+      case 4:
+        return {
+          color: "#ffc107",
+          text: "Canceled"
+        };
+        break;
+      case 5:
+        return {
+          color: "#17a2b8",
+          text: "On the way"
+        };
+        break;
+      case 6:
+        return {
+          color: "#0779fb",
+          text: "Finish"
+        }
       default:
         return {
           color: "#f50",
@@ -98,9 +104,10 @@ const PostGrid = ({
   return (
     <>
       <Grid2Card
+        id={id}
         isCarousel={true}
         favorite={<Tag color={badgeStatus() && badgeStatus().color}>{badgeStatus() && badgeStatus().text}</Tag>}
-        travelName={travelId}
+        travelName={travelName}
         startDate={startDate}
         endDate={endDate}
         route={route}

@@ -43,19 +43,21 @@ const Grid2Card = ({
         <Divider />
         <LeftContent>
           <RatingArea>Date Range : </RatingArea>
-          {startDate && <TitleArea>{startDate}</TitleArea>} - {endDate && <TitleArea>{endDate}</TitleArea>}
-          {route && <RatingArea className="rating">Route : {route}</RatingArea>}
+          {startDate && <RatingArea>{startDate + ' - ' + endDate}</RatingArea>}
+          {route && <RatingArea className="rating">Route : {route === 1 ? 'Jeddah - Jeddah' : 'Jeddah - Mecca'}</RatingArea>}
         </LeftContent>
         <RightContent>
           {flightCode && <RatingArea className="rating">Flight Code : {flightCode}</RatingArea>}
           {airline && <RatingArea className="rating"> Airline : {airline}</RatingArea>}
         </RightContent>
         <ActionButton>
+          <a href={`/detail-reservation/${id}`}>
+            <Button type="success">View Details</Button>
+          </a>
           <Button type="primary" danger>Ignore</Button>
           <Button type="primary">Accept</Button>
         </ActionButton>
         <MetaWrapper className="meta_wrapper">
-
           {/* {viewDetailsBtn || editBtn ? (
             <ButtonGroup className="button_group">
               {viewDetailsBtn}
@@ -63,10 +65,10 @@ const Grid2Card = ({
             </ButtonGroup>
           ) : null} */}
         </MetaWrapper>
-      </ContentWrapper>
+      </ContentWrapper >
 
       {favorite && <FavoriteIcon>{favorite}</FavoriteIcon>}
-    </GridCardWrapper>
+    </GridCardWrapper >
   );
 };
 

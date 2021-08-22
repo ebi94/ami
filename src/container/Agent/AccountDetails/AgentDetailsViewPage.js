@@ -46,21 +46,21 @@ const ProfileNavigation = (props) => {
 	return (
 		<NavigationArea>
 			<Container fluid={true}>
-				<Menu className={className}>
+				<Menu className={className} style={{ flexDirection: 'initial' }}>
 					<Menu.Item key="0">
 						<NavLink exact to={`${match.url}`}>
 							Reservasi
-            </NavLink>
+						</NavLink>
 					</Menu.Item>
 					<Menu.Item key="1">
 						<NavLink to={`${match.url}${AGENT_DASHBOARD_REVIEW}`}>
 							Ulasan
-            </NavLink>
+						</NavLink>
 					</Menu.Item>
 					<Menu.Item key="2">
 						<NavLink to={`${match.url}${AGENT_DASHBOARD_CONTACT}`}>
 							Kontak
-            </NavLink>
+						</NavLink>
 					</Menu.Item>
 				</Menu>
 

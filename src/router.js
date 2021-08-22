@@ -17,6 +17,7 @@ import {
   PRIVACY_PAGE,
   PRICING_PLAN_PAGE,
   MUTHOWIF_REGISTRATION_PAGE,
+  AGENT_DETAIL_RESERVATION
 } from './settings/constant';
 
 /**
@@ -79,6 +80,17 @@ const routes = [
         ),
       loading: Loading,
       modules: ['SinglePageView'],
+    }),
+  },
+  {
+    path: `${AGENT_DETAIL_RESERVATION}/:id`,
+    component: Loadable({
+      loader: () =>
+        import(
+          /* webpackChunkName: "SinglePageView" */ './container/DetailPage/SinglePageView'
+        ),
+      loading: Loading,
+      modules: ['DetailPageView'],
     }),
   },
   {

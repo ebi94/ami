@@ -6,19 +6,20 @@ import { FormTitle } from './AccountSettings.style';
 import { AuthContext } from 'context/AuthProvider';
 
 export default function PaymentSetting() {
-    const { control, errors, watch, handleSubmit } = useForm({
+    const { control, errors, handleSubmit } = useForm({
         mode: 'onChange',
     });
 
-    const { editPassword } = useContext(AuthContext);
+    const { editPayment } = useContext(AuthContext);
 
-    const dataU = localStorage.getItem('dataUser');
-	const dataUser = JSON.parse(dataU);
+	const data = JSON.parse(localStorage.getItem('dataUser'));
+
     const [loading, setLoading] = useState(false);
+
     const onSubmit = (data) => {
         setLoading(true)
-        const email = dataUser && dataUser.email;
-        editPassword(email, data);
+        const id = localStorage.getItem('id');
+        editPayment(id, data);
     };
 
     return (
@@ -29,15 +30,15 @@ export default function PaymentSetting() {
                     <Col lg={12}>
                         <FormControl
                             label="Bank Name"
-                            htmlFor="BankName"
-                            error={errors.BankName && <span>This field is required!</span>}
+                            htmlFor="bankName"
+                            error={errors.bankName && <span>This field is required!</span>}
                         >
                             <Controller
                                 as={<Input />}
-                                defaultValue=""
+                                defaultValue={data && data.bankName}
                                 control={control}
-                                id="BankName"
-                                name="BankName"
+                                id="bankName"
+                                name="bankName"
                                 rules={{ required: true }}
                             />
                         </FormControl>
@@ -45,47 +46,15 @@ export default function PaymentSetting() {
                     <Col lg={12}>
                         <FormControl
                             label="Bank Number"
-                            htmlFor="BankNumber"
-                            error={errors.BankNumber && <span>This field is required!</span>}
+                            htmlFor="bankNumber"
+                            error={errors.bankNumber && <span>This field is required!</span>}
                         >
                             <Controller
                                 as={<Input />}
-                                defaultValue=""
+                                defaultValue={data && data.bankNumber}
                                 control={control}
-                                id="BankNumber"
-                                name="BankNumber"
-                                rules={{ required: true }}
-                            />
-                        </FormControl>
-                    </Col>
-                    <Col lg={12}>
-                        <FormControl
-                            label="BankCode"
-                            htmlFor="text"
-                            error={errors.BankCode && <span>This field is required!</span>}
-                        >
-                            <Controller
-                                as={<Input />}
-                                defaultValue=""
-                                control={control}
-                                id="BankCode"
-                                name="BankCode"
-                                rules={{ required: true }}
-                            />
-                        </FormControl>
-                    </Col>
-                    <Col lg={12}>
-                        <FormControl
-                            label="CIF Code"
-                            htmlFor="CIFCode"
-                            error={errors.CIFCode && <span>This field is required!</span>}
-                        >
-                            <Controller
-                                as={<Input />}
-                                defaultValue=""
-                                control={control}
-                                id="CIFCode"
-                                name="CIFCode"
+                                id="bankNumber"
+                                name="bankNumber"
                                 rules={{ required: true }}
                             />
                         </FormControl>
@@ -93,15 +62,15 @@ export default function PaymentSetting() {
                     <Col lg={24}>
                         <FormControl
                             label="Full Name"
-                            htmlFor="FullName"
-                            error={errors.FullName && <span>This field is required!</span>}
+                            htmlFor="bankFullName"
+                            error={errors.bankFullName && <span>This field is required!</span>}
                         >
                             <Controller
                                 as={<Input />}
-                                defaultValue=""
+                                defaultValue={data && data.bankFullName}
                                 control={control}
-                                id="FullName"
-                                name="FullName"
+                                id="bankFullName"
+                                name="bankFullName"
                                 rules={{ required: true }}
                             />
                         </FormControl>
