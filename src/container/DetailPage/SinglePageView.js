@@ -2,7 +2,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { Row, Col, Divider, Tag } from 'antd';
+import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
+import { Button, Row, Col, Divider, Tag } from 'antd';
 import { useLocation } from 'library/hooks/useLocation';
 import Card from 'components/UI/Card/Card';
 import Container from 'components/UI/Container/Container';
@@ -13,10 +15,13 @@ const SinglePage = ({ match }) => {
   const { id } = useParams();
   const { href } = useLocation();
 
-  const { detailTravel, detailReservation } = useContext(AuthContext);
+  const { detailTravel, detailReservation, editReservation } = useContext(AuthContext);
 
   const [dataDetail, setDataDetail] = useState({});
   const [dataTravel, setDataTravel] = useState({});
+  const [disableBtn, setDisableBtn] = useState(false);
+
+  let history = useHistory();
 
   const badgeStatus = () => {
     switch (dataDetail && dataDetail.status) {
@@ -79,9 +84,69 @@ const SinglePage = ({ match }) => {
     setDataDetail(data);
   };
 
+  const handleAccept = async () => {
+    const res = await editReservation(id, 3);
+    if (res.status === 200) {
+      swal("Terima Kasih", 'Reservasi telah diterima', "success").then(() => {
+        history.go(`/detail-reservation/${id}`);
+      });
+    } else {
+      swal("Error !", "error").then(() => {
+        history.go(`/detail-reservation/${id}`);
+      });
+    }
+  };
+
+  const handleCancel = async () => {
+    const res = await editReservation(id, 4);
+    if (res.status === 200) {
+      swal("Terima Kasih", 'Reservasi telah dibatalkan', "warning").then(() => {
+        history.go(`/detail-reservation/${id}`);
+      });
+    } else {
+      swal("Error !", "error").then(() => {
+        history.go(`/detail-reservation/${id}`);
+      });
+    }
+  };
+
+  const confirm = () => {
+    swal({
+      title: "Apakah anda yakin menerima reservasi ini ?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDoIt) => {
+      if (willDoIt) {
+        handleAccept()
+      }
+    });
+  };
+
+  const cancel = () => {
+    swal({
+      title: "Apakah anda yakin menolak reservasi ini?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDoIt) => {
+      if (willDoIt) {
+        handleCancel()
+      }
+    });
+  };
+
   useEffect(() => {
     getDataReservation(id);
   }, [id]);
+
+  useEffect(() => {
+    if (dataDetail.status > 2) {
+      setDisableBtn(true);
+    }
+  }, [dataDetail.status])
 
 
   return (
@@ -144,6 +209,12 @@ const SinglePage = ({ match }) => {
             </Col>
           </Row>
         </Card>
+        <Row>
+          <Col span="24" style={{textAlign: 'end'}}>
+            <Button type="primary" style={{margin: 10}} disabled={disableBtn} danger onClick={() => cancel()}>Ignore</Button>
+            <Button type="primary" style={{margin: 10}} disabled={disableBtn} onClick={() => confirm()}>Accept</Button>
+          </Col>
+        </Row>
       </Container>
     </SinglePageWrapper>
   );

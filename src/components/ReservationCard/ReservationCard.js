@@ -106,6 +106,7 @@ const PostGrid = ({
       <Grid2Card
         id={id}
         isCarousel={true}
+        status={status}
         favorite={<Tag color={badgeStatus() && badgeStatus().color}>{badgeStatus() && badgeStatus().text}</Tag>}
         travelName={travelName}
         startDate={startDate}

@@ -211,6 +211,21 @@ const AuthProvider = (props) => {
 			});
 	};
 
+	const editReservation = (id, status) => {
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+		return axios.patch(baseUrl + '/reservation/' + id, {
+			status
+		})
+			.then((response) => {
+				return response;
+			})
+			.catch((error) => {
+				return error;
+			});
+	};
+
 	const detailTravel = (id) => {
 		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -521,6 +536,7 @@ const AuthProvider = (props) => {
 				uploadPassport,
 				checkAvailableEmail,
 				detailReservation,
+				editReservation,
 				detailTravel
 			}}
 		>

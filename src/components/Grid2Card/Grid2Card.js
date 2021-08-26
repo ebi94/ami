@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 import { Button, Divider } from 'antd';
+import { AuthContext } from 'context/AuthProvider';
 import GridCardWrapper, {
   ImageWrapper,
   FavoriteIcon,
@@ -21,6 +24,7 @@ const Grid2Card = ({
   endDate,
   route,
   id,
+  status,
   flightCode,
   totalDays,
   airline,
@@ -36,6 +40,74 @@ const Grid2Card = ({
   children,
 }) => {
   let classes = viewDetailsBtn || editBtn ? `has_btn ${className}` : className;
+
+  const { editReservation } = useContext(AuthContext);
+
+  const [disableBtn, setDisableBtn] = useState(false);
+
+  let history = useHistory();
+
+
+  const handleAccept = async () => {
+    const res = await editReservation(id, 3);
+    if (res.status === 200) {
+      swal("Terima Kasih", 'Reservasi telah diterima', "success").then(() => {
+        history.go('/dashboard');
+      });
+    } else {
+      swal("Error !", "error").then(() => {
+        history.go('/dashboard');
+      });
+    }
+  };
+
+  const handleCancel = async () => {
+    const res = await editReservation(id, 4);
+    if (res.status === 200) {
+      swal("Terima Kasih", 'Reservasi telah dibatalkan', "warning").then(() => {
+        history.go('/dashboard');
+      });
+    } else {
+      swal("Error !", "error").then(() => {
+        history.go('/dashboard');
+      });
+    }
+  };
+
+  const confirm = () => {
+    swal({
+      title: "Apakah anda yakin menerima reservasi ini ?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDoIt) => {
+      if (willDoIt) {
+        handleAccept()
+      }
+    });
+  };
+
+  const cancel = () => {
+    swal({
+      title: "Apakah anda yakin menolak reservasi ini?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDoIt) => {
+      if (willDoIt) {
+        handleCancel()
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (status > 2) {
+      setDisableBtn(true);
+    }
+  }, [status])
+
   return (
     <GridCardWrapper className={`grid_card ${classes}`.trim()}>
       <ContentWrapper className="content_wrapper">
@@ -54,8 +126,8 @@ const Grid2Card = ({
           <a href={`/detail-reservation/${id}`}>
             <Button type="success">View Details</Button>
           </a>
-          <Button type="primary" danger>Ignore</Button>
-          <Button type="primary">Accept</Button>
+          <Button type="primary" disabled={disableBtn} danger onClick={() => cancel()}>Ignore</Button>
+          <Button type="primary" disabled={disableBtn} onClick={() => confirm()}>Accept</Button>
         </ActionButton>
         <MetaWrapper className="meta_wrapper">
           {/* {viewDetailsBtn || editBtn ? (
