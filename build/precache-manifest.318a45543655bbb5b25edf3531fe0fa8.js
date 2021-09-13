@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d2620b0356246266ef68959415b30ad5",
+    "revision": "d3f2a3bebe4bdd2b575b70540ee82169",
     "url": "/index.html"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/4.60dcffb8.chunk.css"
   },
   {
-    "revision": "3bd0ae3362dc021ed42b",
+    "revision": "997482ba61971d8a37b0",
     "url": "/static/css/Home.5afe9abc.chunk.css"
   },
   {
@@ -124,12 +124,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/ForgetPassword.91d5896a.chunk.js"
   },
   {
-    "revision": "3bd0ae3362dc021ed42b",
-    "url": "/static/js/Home.16b2c2ed.chunk.js"
+    "revision": "997482ba61971d8a37b0",
+    "url": "/static/js/Home.bad112db.chunk.js"
   },
   {
     "revision": "a16bc6da978d0d0e93239b2ef9f7d540",
-    "url": "/static/js/Home.16b2c2ed.chunk.js.LICENSE.txt"
+    "url": "/static/js/Home.bad112db.chunk.js.LICENSE.txt"
   },
   {
     "revision": "4f8f71a35d3a9de7a783",
@@ -168,8 +168,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/privacy.88bd2db7.chunk.js"
   },
   {
-    "revision": "f6f6dff56c463f5ff4e8",
-    "url": "/static/js/runtime-main.a85aa0ed.js"
+    "revision": "226205a8e362af57c7aa",
+    "url": "/static/js/runtime-main.6e558223.js"
   },
   {
     "revision": "6f0e20ab98e7f6011e0c0ddd69794fd1",
