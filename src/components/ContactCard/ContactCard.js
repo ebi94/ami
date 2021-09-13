@@ -28,11 +28,11 @@ const ContactCard = () => {
 				<Col lg={6}>
 				<ContactDetails>
 					<Heading as="h3" content="No Telepon" />
-					<Text content='021 - 123456789' />
+					<Text content='0858-8884-0629' />
 					<Heading as="h3" content="Email" />
 					<Text content="info@asosiasiami.com" />
 					<Heading as="h3" content="Alamat" />
-					<Text content='DKI Jakarta' />
+					<Text content='Office 88 @kota kasablanka 2nd floor, RT.16/RW.5, Menteng Dalam, Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12960' />
 				</ContactDetails>
 				</Col>
 			</Row>
