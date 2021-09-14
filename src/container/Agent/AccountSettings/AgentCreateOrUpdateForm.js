@@ -9,13 +9,14 @@ import { AuthContext } from 'context/AuthProvider';
 
 export default () => {
 	const { control, errors, handleSubmit } = useForm();
-	const { editProfile } = useContext(AuthContext);
+	const { editProfile, sendEmailVerification } = useContext(AuthContext);
 	const dataU = localStorage.getItem('dataUser');
 	const dataUser = JSON.parse(dataU);
 
 	const dateFormat = 'YYYY-MM-DD';
 
 	const [loading, setLoading] = useState(false);
+	const [loadingResend, setLoadingResend] = useState(false);
 
 	const genderOptions = [
 		{ label: 'Male', value: 'male' },
@@ -27,6 +28,12 @@ export default () => {
 		const id = localStorage.getItem('id');
 		editProfile(id, data);
 	};
+
+	const resendEmailConfirmation = (data) => {
+		setLoadingResend(true)
+		const email = dataUser && dataUser.email;
+		sendEmailVerification(email);
+	}
 
 	return (
 		<Fragment>
@@ -204,6 +211,14 @@ export default () => {
 							/>
 						</FormControl>
 					</Col>
+					{dataUser.status === 0 ?
+						<Col lg={24}>
+							<Button type="primary" onClick={() => resendEmailConfirmation()} style={{ minWidth: 120 }}>
+								{loadingResend ? (<Spin size="default" />) : "Kirim Ulang Email Konfirmasi"}
+							</Button>
+						</Col>
+						: ''
+					}
 				</Row>
 				<div className="submit-container">
 					<Button htmlType="submit" type="primary" style={{ minWidth: 120 }}>

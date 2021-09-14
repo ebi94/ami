@@ -107,7 +107,7 @@ export default function AgentAccountSettingsPage(props) {
                                     alt={data && data.firstName}
                                 />
                                 <ContentWrapper>
-                                    <AgentName>{data.firstName} {data.lastName}</AgentName>
+                                    <AgentName>{data && data.firstName} {data && data.lastName}</AgentName>
                                     <BoxStatus>
                                         <Link to={AGENT_PROFILE_PAGE}>View Dashboard</Link>
                                         {data.status === 0 ?

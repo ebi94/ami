@@ -51,7 +51,7 @@ export default function Section2Grid({
   return (
     <>
       <Box className="grid_wrapper" {...rowStyle}>
-        {data && data.length
+        {/* {data && data.length
           ? data.map((item) => {
             return (
               <Box
@@ -64,7 +64,7 @@ export default function Section2Grid({
               </Box>
             );
           })
-          : null}
+          : null} */}
 
         {loading &&
           limits.map((_, index) => (

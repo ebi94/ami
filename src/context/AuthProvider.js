@@ -120,7 +120,7 @@ const AuthProvider = (props) => {
 		})
 			.then(async (response) => {
 				const resDetail = await detailProfile(id)
-				const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+				const dataDetail = resDetail && resDetail.data && resDetail.data.data;
 				localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 				const messages = response && response.data && response.data.messages;
 				swal("Terima Kasih", messages, "success").then(() => {
@@ -513,6 +513,32 @@ const AuthProvider = (props) => {
 			});
 	};
 
+	const sendEmailVerification = (email) => {
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+		axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+		axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+		axios.post(baseUrl + '/auth/send-email', {
+			email: email
+
+		})
+			.then((response) => {
+				const messages = response && response.data && response.data.messages;
+				swal("Terima Kasih", messages, "success").then(() => {
+					history.go('/account-settings');
+				});
+				console.log('response', response);
+				return { ...response.data }
+			})
+			.catch((error) => {
+				const messages = error && error.response && error.response.data && error.response.data.messages;
+				swal("Error !", messages, "warning").then(() => {
+					history.go('/account-settings');
+				});
+				console.log('error', error.response.data);
+				return { ...error.response.data }
+			});
+	};
+
 	return (
 		<AuthContext.Provider
 			value={{
@@ -537,7 +563,8 @@ const AuthProvider = (props) => {
 				checkAvailableEmail,
 				detailReservation,
 				editReservation,
-				detailTravel
+				detailTravel,
+				sendEmailVerification,
 			}}
 		>
 			<>{props.children}</>

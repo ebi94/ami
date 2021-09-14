@@ -28,7 +28,7 @@ const ContactCard = () => {
 				<Col lg={6}>
 				<ContactDetails>
 					<Heading as="h3" content="No Telepon" />
-					<Text content='0858-8884-0629' />
+					<Text content='0858-8884-0629 / 0813-1102-3717' />
 					<Heading as="h3" content="Email" />
 					<Text content="info@asosiasiami.com" />
 					<Heading as="h3" content="Alamat" />
