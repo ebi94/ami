@@ -145,7 +145,7 @@ const AuthProvider = (props) => {
 		})
 			.then(async (response) => {
 				const resDetail = await detailProfile(id)
-				const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+				const dataDetail = resDetail && resDetail.data && resDetail.data.data;
 				localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 				const messages = response && response.data && response.data.messages;
 				swal("Terima Kasih", messages, "success").then(() => {
@@ -260,6 +260,9 @@ const AuthProvider = (props) => {
 			email: email
 		})
 			.then(async (response) => {
+				const resDetail = await detailProfile(idMutowhif);
+				const dataDetail = resDetail && resDetail.data && resDetail.data.data;
+				localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 				return true;
 			})
 			.catch(function (error) {
@@ -286,7 +289,7 @@ const AuthProvider = (props) => {
 				const messages = response && response.data && response.data.messages;
 				swal("Terima Kasih", messages, "success").then(async () => {
 					const resDetail = await detailProfile(idMutowhif);
-					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data;
 					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
@@ -321,7 +324,7 @@ const AuthProvider = (props) => {
 				const messages = response && response.data && response.data.messages;
 				swal("Terima Kasih", messages, "success").then(async () => {
 					const resDetail = await detailProfile(idMutowhif);
-					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data;
 					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
@@ -364,7 +367,7 @@ const AuthProvider = (props) => {
 				const messages = error && error.response && error.response.data && error.response.data.messages;
 				swal("Terima Kasih", messages, "success").then(async () => {
 					const resDetail = await detailProfile(idMutowhif);
-					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data;
 					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
@@ -392,7 +395,7 @@ const AuthProvider = (props) => {
 				const messages = response && response.data && response.data.messages;
 				swal("Terima Kasih", messages, "success").then(async () => {
 					const resDetail = await detailProfile(idMutowhif);
-					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data;
 					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
@@ -427,7 +430,7 @@ const AuthProvider = (props) => {
 				const messages = response && response.data && response.data.messages;
 				swal("Terima Kasih", messages, "success").then(async () => {
 					const resDetail = await detailProfile(idMutowhif);
-					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data;
 					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
@@ -462,7 +465,7 @@ const AuthProvider = (props) => {
 				const messages = response && response.data && response.data.messages;
 				swal("Terima Kasih", messages, "success").then(async () => {
 					const resDetail = await detailProfile(idMutowhif);
-					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data;
 					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
@@ -497,7 +500,7 @@ const AuthProvider = (props) => {
 				const messages = response && response.data && response.data.messages;
 				swal("Terima Kasih", messages, "success").then(async () => {
 					const resDetail = await detailProfile(idMutowhif);
-					const dataDetail = resDetail && resDetail.data && resDetail.data.data[0];
+					const dataDetail = resDetail && resDetail.data && resDetail.data.data;
 					localStorage.setItem('dataUser', JSON.stringify(dataDetail));
 					history.go('/account-settings');
 				});
