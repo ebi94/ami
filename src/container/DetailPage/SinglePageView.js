@@ -3,7 +3,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
-import swal from 'sweetalert';
+import swal from 'sweetalert'
+import { Document, Page } from 'react-pdf';
 import { Button, Row, Col, Divider, Tag } from 'antd';
 import { useLocation } from 'library/hooks/useLocation';
 import Card from 'components/UI/Card/Card';
@@ -20,6 +21,28 @@ const SinglePage = ({ match }) => {
   const [dataDetail, setDataDetail] = useState({});
   const [dataTravel, setDataTravel] = useState({});
   const [disableBtn, setDisableBtn] = useState(false);
+
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+    setPageNumber(1);
+  };
+
+
+  const changePage = (offset) => {
+    setPageNumber(prevPageNumber => prevPageNumber + offset);
+  }
+
+  const previousPage = () => {
+    changePage(-1);
+  }
+
+  const nextPage = () => {
+    changePage(1);
+  }
+
 
   let history = useHistory();
 
@@ -117,11 +140,11 @@ const SinglePage = ({ match }) => {
       buttons: true,
       dangerMode: true,
     })
-    .then((willDoIt) => {
-      if (willDoIt) {
-        handleAccept()
-      }
-    });
+      .then((willDoIt) => {
+        if (willDoIt) {
+          handleAccept()
+        }
+      });
   };
 
   const cancel = () => {
@@ -131,11 +154,11 @@ const SinglePage = ({ match }) => {
       buttons: true,
       dangerMode: true,
     })
-    .then((willDoIt) => {
-      if (willDoIt) {
-        handleCancel()
-      }
-    });
+      .then((willDoIt) => {
+        if (willDoIt) {
+          handleCancel()
+        }
+      });
   };
 
   useEffect(() => {
@@ -209,10 +232,43 @@ const SinglePage = ({ match }) => {
             </Col>
           </Row>
         </Card>
+        <br />
+        <Card title="Jadwal Perjalanan / Itenary">
+          <Divider />
+          <Row>
+            <Col style={{ textAlign: 'center', margin: '0 auto' }}>
+              <Document
+                file={`${process.env.REACT_APP_BACKEND_API}/files/itenary/${dataDetail.pdfItenaryUrl}`}
+                onLoadSuccess={onDocumentLoadSuccess}
+              >
+                <Page pageNumber={pageNumber} />
+              </Document>
+              <p>Page {pageNumber} of {numPages}</p>
+              <div>
+                <div>
+                  <button
+                    type="button"
+                    disabled={pageNumber <= 1}
+                    onClick={previousPage}
+                  >
+                    Previous
+                  </button>
+                  <button
+                    type="button"
+                    disabled={pageNumber >= numPages}
+                    onClick={nextPage}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Card>
         <Row>
-          <Col span="24" style={{textAlign: 'end'}}>
-            <Button type="primary" style={{margin: 10}} disabled={disableBtn} danger onClick={() => cancel()}>Ignore</Button>
-            <Button type="primary" style={{margin: 10}} disabled={disableBtn} onClick={() => confirm()}>Accept</Button>
+          <Col span="24" style={{ textAlign: 'end' }}>
+            <Button type="primary" style={{ margin: 10 }} disabled={disableBtn} danger onClick={() => cancel()}>Ignore</Button>
+            <Button type="primary" style={{ margin: 10 }} disabled={disableBtn} onClick={() => confirm()}>Accept</Button>
           </Col>
         </Row>
       </Container>

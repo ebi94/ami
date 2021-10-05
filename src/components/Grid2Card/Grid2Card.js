@@ -111,7 +111,8 @@ const Grid2Card = ({
   return (
     <GridCardWrapper className={`grid_card ${classes}`.trim()}>
       <ContentWrapper className="content_wrapper">
-        {travelName && <LocationArea>booked by - {travelName}</LocationArea>}
+        {travelName && <LocationArea>Booked by - {travelName}</LocationArea>}
+        {id && <LocationArea>Reservation ID : {id}</LocationArea>}
         <Divider />
         <LeftContent>
           <RatingArea>Date Range : </RatingArea>
