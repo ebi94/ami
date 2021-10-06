@@ -239,7 +239,7 @@ const SinglePage = ({ match }) => {
             <Col style={{ textAlign: 'center', margin: '0 auto' }}>
               <Document
                 file={`${process.env.REACT_APP_BACKEND_API}/files/itenary/${dataDetail.pdfItenaryUrl}`}
-                onLoadSuccess={onDocumentLoadSuccess}
+                onLoadSuccess={() => onDocumentLoadSuccess()}
               >
                 <Page pageNumber={pageNumber} />
               </Document>
@@ -249,14 +249,14 @@ const SinglePage = ({ match }) => {
                   <button
                     type="button"
                     disabled={pageNumber <= 1}
-                    onClick={previousPage}
+                    onClick={() => previousPage()}
                   >
                     Previous
                   </button>
                   <button
                     type="button"
                     disabled={pageNumber >= numPages}
-                    onClick={nextPage}
+                    onClick={() => nextPage()}
                   >
                     Next
                   </button>
