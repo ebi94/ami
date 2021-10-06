@@ -43,6 +43,11 @@ const SinglePage = ({ match }) => {
     changePage(1);
   }
 
+  const downloadItenary = () => {
+    const urlDownload = `${process.env.REACT_APP_BACKEND_API}/files/itenary/${dataDetail.pdfItenaryUrl}`
+    window.open(urlDownload, '_blank').focus();
+  };
+
 
   let history = useHistory();
 
@@ -237,7 +242,7 @@ const SinglePage = ({ match }) => {
           <Divider />
           <Row>
             <Col style={{ textAlign: 'center', margin: '0 auto' }}>
-              <Document
+              {/* <Document
                 file={`${process.env.REACT_APP_BACKEND_API}/files/itenary/${dataDetail.pdfItenaryUrl}`}
                 onLoadSuccess={() => onDocumentLoadSuccess()}
               >
@@ -261,7 +266,8 @@ const SinglePage = ({ match }) => {
                     Next
                   </button>
                 </div>
-              </div>
+              </div> */}
+              <Button type="primary" style={{ margin: 10 }} onClick={() => downloadItenary()}>Download Itenary</Button>
             </Col>
           </Row>
         </Card>
